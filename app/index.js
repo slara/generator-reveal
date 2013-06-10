@@ -34,14 +34,9 @@ RevealGenerator.prototype.askFor = function askFor() {
   console.log(welcome);
 
   var prompts = [{
-    name: 'someOption',
-    message: 'Would you like to use Markdown?',
-    default: 'Y/n',
-    warning: 'Yes: Enabling this will be totally awesome!'
-  },
   {
     name: 'presentationTitle',
-    message: "What's all this thing about?"
+    message: "What are you going to talk about?"
   }];
 
   this.prompt(prompts, function (err, props) {
@@ -49,7 +44,6 @@ RevealGenerator.prototype.askFor = function askFor() {
       return this.emit('error', err);
     }
 
-    this.useMarkdown = (/y/i).test(props.useMarkdown);
     this.presentationTitle = props.presentationTitle;
 
     cb();
@@ -66,7 +60,6 @@ RevealGenerator.prototype.app = function app() {
   this.template('_package.json', 'package.json');
   this.template('_bower.json', 'bower.json');
   this.template('_config.json', 'config.json');
-  this.copy('wordmap.json','wordmap.json');
 };
 
 RevealGenerator.prototype.projectfiles = function projectfiles() {

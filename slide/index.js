@@ -13,7 +13,6 @@ var SlideGenerator = module.exports = function SlideGenerator(args, options, con
 util.inherits(SlideGenerator, yeoman.generators.NamedBase);
 
 SlideGenerator.prototype.files = function files() {
-  var index = 1;
-  var filename = index + '-' + this._.slugify(this.name) + '.md';
-  this.write('slides/' + filename, '# ' + this.name);
+  var filename = 'slides/' + this._.slugify(this.name) + '.md';
+  this.template('slide.md', filename);
 };
