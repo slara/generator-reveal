@@ -34,7 +34,6 @@ RevealGenerator.prototype.askFor = function askFor() {
   console.log(welcome);
 
   var prompts = [{
-  {
     name: 'presentationTitle',
     message: "What are you going to talk about?"
   }];
@@ -43,9 +42,7 @@ RevealGenerator.prototype.askFor = function askFor() {
     if (err) {
       return this.emit('error', err);
     }
-
     this.presentationTitle = props.presentationTitle;
-
     cb();
   }.bind(this));
 };
