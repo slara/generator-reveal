@@ -32,7 +32,7 @@ Available generators:
 * [reveal:slide](#slide)
 
 ### Slide
-Generates a controller and view, and configures a route in `app/scripts/app.js` connecting them.
+Generates a Slide Markdown file. 
 
 Example:
 ```bash
