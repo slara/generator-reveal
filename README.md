@@ -2,20 +2,29 @@
 
 A Reveal.js generator for Yeoman.
 
-## Getting started
-- Make sure you have [yo](https://github.com/yeoman/yo) installed
-- clone this repo
-```
-git clone https://github.com/slara/generator-reveal
-cd generator-reveal
-```
-- link the generator to npm: `npm link`
-- Go to your new project directory
-- Run: `yo reveal`
+## Usage
 
-## Subgenerators:
+Install `generator-angular`:
+```
+npm install generator-reveal
+```
 
-- reveal:slide
+Make a new directory, and `cd` into it:
+```
+mkdir my-new-project && cd $_
+```
+
+Run `yo reveal`:
+```
+yo reveal
+```
+
+## Generators
+
+Available generators:
+
+* [reveal:slide](#slide)
+
 
 ## License
 [MIT License](http://en.wikipedia.org/wiki/MIT_License)
