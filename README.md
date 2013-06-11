@@ -4,7 +4,7 @@ A Reveal.js generator for Yeoman.
 
 ## Usage
 
-Install `generator-angular`:
+Install `generator-reveal`:
 ```
 npm install generator-reveal
 ```
