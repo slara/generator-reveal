@@ -46,7 +46,7 @@ Produces `slides/slide-title.md`:
 This is a new slide
 ```
 
-After you fill your slide with content, you need to add the slide filename to your `slides/list.json` file, e.g.
+And the slide filename will be added to your `slides/list.json` file.
 
 ```json
 ["index.md", "slide-title.md"]
