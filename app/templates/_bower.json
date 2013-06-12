@@ -2,6 +2,8 @@
   "name": "<%= _.slugify(presentationTitle) %>",
   "version": "0.0.1",
   "dependencies": {
-    "reveal.js": "~2.4"
+    "reveal.js": "~2.4",
+    "handlebars": "~1.0.0",
+    "jquery": "~1.10"
   }
 }

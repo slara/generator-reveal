@@ -46,15 +46,11 @@ Produces `slides/slide-title.md`:
 This is a new slide
 ```
 
-After you fill your slide, you need to add 
+After you fill your slide with content, you need to add the slide filename to your `slides/list.json` file, e.g.
 
-```html
-<section data-markdown="slides/slide-title.md"></section>
+```json
+["index.md", "slide-title.md"]
 ```
-
-to your `index.html` file, inside the `slides` div.
-
-
 
 ## License
 [MIT License](http://en.wikipedia.org/wiki/MIT_License)

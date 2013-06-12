@@ -11,40 +11,58 @@
   <link rel="stylesheet" href="bower_components/reveal.js/css/theme/default.css" id="theme">
 </head>
 <body>
-    <div class="reveal">
-        <div class="slides">
-          <section data-markdown="slides/index.md"></section>
-        </div>
+
+  <div class="reveal">
+    <div class="slides">
     </div>
+  </div>
+
+  <script src="bower_components/jquery/jquery.js"></script>
+  <script src="bower_components/handlebars/handlebars.js"></script>
   <script src="bower_components/reveal.js/lib/js/head.min.js"></script>
   <script src="bower_components/reveal.js/js/reveal.min.js"></script>
 
+  <script id="slide-template" type="x-handlebars-template">
+    <section data-markdown="slides/{{file}}"></section>
+  </script> 
+
   <script>
+  // First, get sorted slide list
+  $.getJSON('slides/list.json', function(data) {
+    // Add ordered slides
+    var slides = data;
+    var templatescript = $("#slide-template").html();
+    var templ = Handlebars.compile(templatescript);
+    slides.forEach(function (slide) {
+      $(".slides").append(templ({'file': slide}));
+    });
 
-      // Full list of configuration options available here:
-      // https://github.com/hakimel/reveal.js#configuration
-      Reveal.initialize({
-          controls: true,
-          progress: true,
-          history: true,
-          center: true,
+    // Configure Reveal
+    // Full list of configuration options available here:
+    // https://github.com/hakimel/reveal.js#configuration
+    Reveal.initialize({
+      controls: true,
+      progress: true,
+      history: true,
+      center: true,
 
-          theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
-          transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+      theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+      transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
 
-          // Optional libraries used to extend on reveal.js
-          dependencies: [
-          { src: 'bower_components/reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
-          { src: 'bower_components/reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-          { src: 'bower_components/reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-          { src: 'bower_components/reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
-          { src: 'bower_components/reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
-          { src: 'bower_components/reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
-          // { src: 'plugin/search/search.js', async: true, condition: function() { return !!document.body.classList; } }
-          //{ src: 'bower_components/reveal.js/plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
-          ]
-      });
-
+      // Optional libraries used to extend on reveal.js
+      dependencies: [
+      { src: 'bower_components/reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+      { src: 'bower_components/reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+      { src: 'bower_components/reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+      { src: 'bower_components/reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+      { src: 'bower_components/reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+      { src: 'bower_components/reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+      // { src: 'plugin/search/search.js', async: true, condition: function() { return !!document.body.classList; } }
+      //{ src: 'bower_components/reveal.js/plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+      ]
+    });
+  });
   </script>
+
 </body>
 </html>
