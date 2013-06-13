@@ -1,6 +1,6 @@
 # Generator-reveal
 
-A Reveal.js generator for Yeoman.
+A Yeoman generator for Reveal.js.
 
 ## Usage
 
