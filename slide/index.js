@@ -37,5 +37,5 @@ SlideGenerator.prototype.files = function files() {
   var fullPath = path.join(appPath, '/slides/list.json');
   var list = require(fullPath);
   list.push(this.filename);
-  fs.writeFileSync(fullPath, JSON.stringify(list))
+  fs.writeFileSync(fullPath, JSON.stringify(list, null, 4))
 };
