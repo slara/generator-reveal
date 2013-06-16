@@ -32,24 +32,39 @@ Available generators:
 * [reveal:slide](#slide)
 
 ### Slide
-Generates a Slide Markdown file. 
+Generates a Slide file. 
 
 Example:
 ```bash
 yo reveal:slide "Slide Title"
 ```
 
-Produces `slides/slide-title.md`:
-```markdown
-## Slide Title
+Produces `slides/slide-title.html`:
 
-This is a new slide
+```html
+<h2>Slide Title</h2>
+
+<p>This is a new slide</p>
+
 ```
 
 And the slide filename will be added to your `slides/list.json` file.
 
 ```json
 ["index.md", "slide-title.md"]
+```
+
+#### Options
+
+##### Markdown
+
+Invoked with `--markdown`
+Produces `slides/slide-title.md`
+
+```markdown
+## Slide Title
+
+This is a new slide
 ```
 
 ## License

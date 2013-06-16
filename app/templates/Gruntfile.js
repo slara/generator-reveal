@@ -21,7 +21,9 @@ module.exports = function (grunt) {
       livereload: {
         files: [
           'index.html',
-          'slides/*.md'
+          'slides/*.md',
+          'slides/*.html',
+          'slides/list.json'
         ],
         tasks: ['build']
       }

@@ -1,3 +1,3 @@
 ##  <%= name %>
 
-This is a new slide
+This is a new Markdown slide

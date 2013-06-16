@@ -22,6 +22,10 @@
   <script src="bower_components/reveal.js/lib/js/head.min.js"></script>
   <script src="bower_components/reveal.js/js/reveal.min.js"></script>
 
+  <script id="slide-template-markdown" type="x-handlebars-template">
+    <section data-markdown="slides/{{file}}"></section>
+  </script> 
+
   <script id="slide-template" type="x-handlebars-template">
     <section data-markdown="slides/{{file}}"></section>
   </script> 
@@ -31,9 +35,16 @@
   $.getJSON('slides/list.json', function(data) {
     // Add ordered slides
     var slides = data;
-    var templatescript = $("#slide-template").html();
-    var templ = Handlebars.compile(templatescript);
+    var md_template = $("#slide-template-markdown").html();
+    var html_template = $("#slide-template-markdown").html();
+    var md_templ = Handlebars.compile(md_template);
+    var html_templ = Handlebars.compile(html_template);
     slides.forEach(function (slide) {
+      if (slide.indexOf('.html') !== -1) {
+        var templ = html_templ;
+      } else if (slide.indexOf('.md') !== -1) {
+        var templ = md_templ;
+      }
       $(".slides").append(templ({'file': slide}));
     });
 
