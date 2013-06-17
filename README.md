@@ -42,9 +42,11 @@ yo reveal:slide "Slide Title"
 Produces `slides/slide-title.html`:
 
 ```html
-<h2>Slide Title</h2>
+<section>
+    <h2>Slide Title</h2>
 
-<p>This is a new slide</p>
+    <p>This is a new slide</p>
+</section>
 
 ```
 
@@ -59,6 +61,10 @@ And the slide filename will be added to your `slides/list.json` file.
 ##### Markdown
 
 Invoked with `--markdown`
+
+```bash
+yo reveal:slide "Slide Title" --markdown
+```
 Produces `slides/slide-title.md`
 
 ```markdown
