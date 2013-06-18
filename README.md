@@ -1,6 +1,22 @@
 # Generator-reveal
 
-A Yeoman generator for Reveal.js.
+A Yeoman generator for the Awesome Reveal.js presentation framework.
+http://lab.hakim.se/reveal-js/#/
+
+**Note:**   If you have problems with livereload on Mac OSX, you can comment line 42 of the Grunfile.js file. 
+
+```javascript
+middleware: function (connect) {
+  return [
+    //lrSnippet,
+    mountFolder(connect, '.')
+  ];
+}
+```
+
+For additional info, follow [Issue #5](https://github.com/slara/generator-reveal/issues/5).
+
+---
 
 ## Usage
 
