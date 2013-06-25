@@ -69,7 +69,7 @@ Produces `slides/slide-title.html`:
 And the slide filename will be added to your `slides/list.json` file.
 
 ```json
-["index.md", "slide-title.md"]
+["index.md", "slide-title.html"]
 ```
 
 #### Options
