@@ -6,7 +6,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title><%= _.capitalize(presentationTitle) %></title>
+  <title>Reveal Generator</title>
   <link rel="stylesheet" href="bower_components/reveal.js/css/reveal.min.css">
   <link rel="stylesheet" href="bower_components/reveal.js/css/theme/default.css" id="theme">
 
@@ -23,6 +23,7 @@
   <script src="bower_components/handlebars/handlebars.js"></script>
   <script src="bower_components/reveal.js/lib/js/head.min.js"></script>
   <script src="bower_components/reveal.js/js/reveal.min.js"></script>
+  <script src="js/main.js"></script>
 
   <script id="slide-template-markdown" type="x-handlebars-template">
     <section data-markdown="slides/{{file}}"></section>
@@ -32,23 +33,15 @@
     <section data-html="slides/{{file}}"></section>
   </script> 
 
+  <script id="vertical-template" type="x-handlebars-template">
+    <section class="{{ident}}"></section>
+  </script>
+
   <script>
   // First, get sorted slide list
   $.getJSON('slides/list.json', function(data) {
-    // Add ordered slides
-    var slides = data;
-    var md_template = $("#slide-template-markdown").html();
-    var html_template = $("#slide-template").html();
-    var md_templ = Handlebars.compile(md_template);
-    var html_templ = Handlebars.compile(html_template);
-    slides.forEach(function (slide) {
-      if (slide.indexOf('.html') !== -1) {
-        var templ = html_templ;
-      } else if (slide.indexOf('.md') !== -1) {
-        var templ = md_templ;
-      }
-      $(".slides").append(templ({'file': slide}));
-    });
+    // Append ordered slides
+    append_slides(data);
 
     // Configure Reveal
     // Full list of configuration options available here:

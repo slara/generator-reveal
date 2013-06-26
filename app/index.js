@@ -58,6 +58,7 @@ RevealGenerator.prototype.app = function app() {
   this.template('_bower.json', 'bower.json');
   this.template('_config.json', 'config.json');
   this.copy('loadtemplates.js', 'js/loadtemplates.js');
+  this.copy('main.js', 'js/main.js');
   this.copy('list.json', 'slides/list.json');
 };
 

@@ -69,7 +69,29 @@ Produces `slides/slide-title.html`:
 And the slide filename will be added to your `slides/list.json` file.
 
 ```json
-["index.md", "slide-title.html"]
+[
+    "index.md", 
+    "slide-title.html"
+]
+```
+
+#### Vertical Slides
+
+In order to add vertical slides, you can nest an array inside `slides/list.json`
+
+```json
+[
+    "index.md",
+    [
+        "vertical-html.html",
+        "vertical-markdown.md",
+    ],
+    [
+        "vertical-html-2.html",
+        "vertical-markdown-2.md",
+    ],
+    "the-end.md"
+]
 ```
 
 #### Options
