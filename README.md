@@ -84,11 +84,11 @@ In order to add vertical slides, you can nest an array inside `slides/list.json`
     "index.md",
     [
         "vertical-html.html",
-        "vertical-markdown.md",
+        "vertical-markdown.md"
     ],
     [
         "vertical-html-2.html",
-        "vertical-markdown-2.md",
+        "vertical-markdown-2.md"
     ],
     "the-end.md"
 ]
