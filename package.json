@@ -1,9 +1,10 @@
 {
   "name": "generator-reveal",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "A Reveal.js generator for Yeoman",
   "keywords": [
-    "generator-reveal"
+    "generator-reveal",
+    "yeoman-generator"
   ],
   "homepage": "https://github.com/slara/generator-reveal",
   "bugs": "https://github.com/slara/generator-reveal/issues",
