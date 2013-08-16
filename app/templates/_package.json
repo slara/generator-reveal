@@ -1,5 +1,6 @@
 {
   "name": "<%= _.slugify(presentationTitle) %>",
+  "version": "<%= packageVersion %>",
   "private": true,
   "devDependencies": {
     "grunt": "~0.4.1",
