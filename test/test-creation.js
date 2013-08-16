@@ -23,7 +23,8 @@ describe('reveal generator', function () {
     var expected = [
       // add files you expect to exist here.
       '.jshintrc',
-      '.editorconfig'
+      '.editorconfig',
+      'package.json'
     ];
 
     helpers.mockPrompt(this.app, {
@@ -33,6 +34,20 @@ describe('reveal generator', function () {
     this.app.run({}, function () {
       helpers.assertFiles(expected);
       done();
+    });
+  });
+
+  describe('generated package.json', function () {
+    it('should have a version', function (done) {
+      helpers.mockPrompt(this.app, {
+        'presentationTitle': 'package.json test',
+        'packageVersion': '1.2.3'
+      });
+      this.app.options['skip-install'] = true;
+      this.app.run({}, function(){
+        helpers.assertFile('package.json', /"version": "1.2.3"/);
+        done();
+      });
     });
   });
 });

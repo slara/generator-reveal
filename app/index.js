@@ -36,6 +36,10 @@ RevealGenerator.prototype.askFor = function askFor() {
   var prompts = [{
     name: 'presentationTitle',
     message: "What are you going to talk about?"
+  },{
+    name: 'packageVersion',
+    message: "What version should we put in the package.json file?",
+    default: '0.0.0'
   }];
 
   this.prompt(prompts, function (err, props) {
@@ -43,6 +47,7 @@ RevealGenerator.prototype.askFor = function askFor() {
       return this.emit('error', err);
     }
     this.presentationTitle = props.presentationTitle;
+    this.packageVersion = props.packageVersion
     cb();
   }.bind(this));
 };
