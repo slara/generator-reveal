@@ -42,10 +42,7 @@ RevealGenerator.prototype.askFor = function askFor() {
     default: '0.0.0'
   }];
 
-  this.prompt(prompts, function (err, props) {
-    if (err) {
-      return this.emit('error', err);
-    }
+  this.prompt(prompts, function (props) {
     this.presentationTitle = props.presentationTitle;
     this.packageVersion = props.packageVersion
     cb();
