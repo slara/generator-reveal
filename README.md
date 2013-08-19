@@ -111,5 +111,30 @@ Produces `slides/slide-title.md`
 This is a new slide
 ```
 
+##### Speaker Notes
+
+Invoked with `--notes`
+
+```bash
+yo reveal:slide "Slide Title" --notes
+```
+
+Produces `slides/slide-title.html`:
+
+```html
+<section>
+    <h2>Slide Title</h2>
+
+    <p>This is a new slide</p>
+    
+    <aside class="notes">
+        Put your speaker notes here.
+        You can see them pressing 's'.
+    </aside>
+</section>
+
+```
+For markdown, just add `--markdown`.
+
 ## License
 [MIT License](http://en.wikipedia.org/wiki/MIT_License)

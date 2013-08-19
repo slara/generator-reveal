@@ -29,9 +29,17 @@ SlideGenerator.prototype.files = function files() {
   var appPath = process.cwd();
   var fullfilename = path.join(appPath, '/slides/' + this.filename);
   if (this.useMarkdown) {
-    this.template('slide.md', fullfilename);
+    if (this.options.notes) {
+      this.template('slide-withnotes.md', fullfilename);
+    } else {
+      this.template('slide.md', fullfilename);
+    }
   } else {
-    this.template('slide.html', fullfilename);
+    if (this.options.notes) {
+      this.template('slide-withnotes.html', fullfilename);
+    } else {
+      this.template('slide.html', fullfilename);
+    }
   }
   var fullPath = path.join(appPath, '/slides/list.json');
   var list = require(fullPath);
