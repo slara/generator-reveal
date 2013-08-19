@@ -20,8 +20,7 @@ var SlideGenerator = module.exports = function SlideGenerator(args, options, con
     this.useMarkdown = false;
     this.filename = this._.slugify(this.name) + '.html';
     console.log('Using HTML!', this.filename);
-  };
-
+  }
 };
 
 util.inherits(SlideGenerator, yeoman.generators.NamedBase);
@@ -37,5 +36,5 @@ SlideGenerator.prototype.files = function files() {
   var fullPath = path.join(appPath, '/slides/list.json');
   var list = require(fullPath);
   list.push(this.filename);
-  fs.writeFileSync(fullPath, JSON.stringify(list, null, 4))
+  fs.writeFileSync(fullPath, JSON.stringify(list, null, 4));
 };

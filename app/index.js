@@ -3,7 +3,6 @@ var util = require('util');
 var path = require('path');
 var yeoman = require('yeoman-generator');
 
-
 var RevealGenerator = module.exports = function RevealGenerator(args, options, config) {
   yeoman.generators.Base.apply(this, arguments);
 
@@ -35,16 +34,17 @@ RevealGenerator.prototype.askFor = function askFor() {
 
   var prompts = [{
     name: 'presentationTitle',
-    message: "What are you going to talk about?"
-  },{
+    message: 'What are you going to talk about?'
+  },
+  {
     name: 'packageVersion',
-    message: "What version should we put in the package.json file?",
+    message: 'What version should we put in the package.json file?',
     default: '0.0.0'
   }];
 
   this.prompt(prompts, function (props) {
     this.presentationTitle = props.presentationTitle;
-    this.packageVersion = props.packageVersion
+    this.packageVersion = props.packageVersion;
     cb();
   }.bind(this));
 };

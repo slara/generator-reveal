@@ -1,33 +1,32 @@
-
-var append_slides = function (data) {
+'use strict';
+var appendSlides = function (data) {
   var slides = data;
-  var md_template = $('#slide-template-markdown').html();
-  var html_template = $('#slide-template').html();
-  var vertical_template = $('#vertical-template').html();
-  var md_templ = Handlebars.compile(md_template);
-  var html_templ = Handlebars.compile(html_template);
-  var vertical_templ = Handlebars.compile(vertical_template);
+  var mdtemplate = $('#slide-template-markdown').html();
+  var htmltemplate = $('#slide-template').html();
+  var verticaltemplate = $('#vertical-template').html();
+  var mdtempl = Handlebars.compile(mdtemplate);
+  var htmltempl = Handlebars.compile(htmltemplate);
+  var verticaltempl = Handlebars.compile(verticaltemplate);
   slides.forEach(function (slide, index) {
-
-  if (Object.prototype.toString.call(slide) === '[object Array]') {
-      var vertical_ident = 'vertical-' + index;
-      console.log(vertical_ident);
-      $('.slides').append(vertical_templ({'ident': vertical_ident}))
+    var templ;
+    if (Object.prototype.toString.call(slide) === '[object Array]') {
+      var verticalindex = 'vertical-' + index;
+      $('.slides').append(verticaltempl({'ident': verticalindex}));
 
       slide.forEach(function (slide) {
         if (slide.indexOf('.html') !== -1) {
-          var templ = html_templ;
+          templ = htmltempl;
         } else if (slide.indexOf('.md') !== -1) {
-          var templ = md_templ;
+          templ = mdtempl;
         }
         $('.vertical-' + index).append(templ({'file': slide}));
       });
 
     } else {
       if (slide.indexOf('.html') !== -1) {
-        var templ = html_templ;
+        templ = htmltempl;
       } else if (slide.indexOf('.md') !== -1) {
-        var templ = md_templ;
+        templ = mdtempl;
       }
       $('.slides').append(templ({'file': slide}));
     }
