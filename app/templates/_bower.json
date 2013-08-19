@@ -1,8 +1,8 @@
 {
   "name": "<%= _.slugify(presentationTitle) %>",
-  "version": "0.0.1",
+  "version": "<%= packageVersion %>",
   "dependencies": {
-    "reveal.js": "~2.4",
+    "reveal.js": "git@github.com:hakimel/reveal.js.git#master",
     "handlebars": "~1.0.0",
     "jquery": "~1.10"
   }
