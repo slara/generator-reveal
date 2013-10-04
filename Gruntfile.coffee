@@ -32,6 +32,11 @@ module.exports = (grunt) ->
             all:
                 src: ['test/*.js']
 
+        clean:
+
+            test:
+                src: ['test/temp']
+
 
     # Load all grunt tasks.
     require('load-grunt-tasks')(grunt)
@@ -40,5 +45,6 @@ module.exports = (grunt) ->
     grunt.registerTask 'default', [
         'coffeelint',
         'jshint',
+        'clean',
         'mochaTest'
     ]
