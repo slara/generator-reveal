@@ -1,6 +1,6 @@
 {
   "name": "generator-reveal",
-  "version": "0.0.15",
+  "version": "0.1.0",
   "description": "A Reveal.js generator for Yeoman",
   "keywords": [
     "generator-reveal",
@@ -10,7 +10,7 @@
   "bugs": "https://github.com/slara/generator-reveal/issues",
   "author": {
     "name": "Sebastian Lara Menares",
-    "email": "",
+    "email": "slaramen@gmail.com",
     "url": "https://github.com/slara"
   },
   "main": "app/index.js",
