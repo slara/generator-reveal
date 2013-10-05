@@ -23,8 +23,14 @@ describe('reveal generator', function () {
     var expected = [
       // add files you expect to exist here.
       '.jshintrc',
+      'index.tpl',
       '.editorconfig',
-      'package.json'
+      'package.json',
+      'Gruntfile.coffee',
+      'bower.json',
+      'config.json',
+      'js/loadhtmlslides.js',
+      'slides/list.json'
     ];
 
     helpers.mockPrompt(this.app, {
@@ -44,7 +50,7 @@ describe('reveal generator', function () {
         'packageVersion': '1.2.3'
       });
       this.app.options['skip-install'] = true;
-      this.app.run({}, function(){
+      this.app.run({}, function () {
         helpers.assertFile('package.json', /"version": "1.2.3"/);
         done();
       });
