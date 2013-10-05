@@ -5,7 +5,7 @@ var fs = require('fs');
 var path = require('path');
 
 
-var SlideGenerator = module.exports = function SlideGenerator(args, options, config) {
+var SlideGenerator = module.exports = function SlideGenerator() {
   // By calling `NamedBase` here, we get the argument to the subgenerator call
   // as `this.name`.
   yeoman.generators.NamedBase.apply(this, arguments);

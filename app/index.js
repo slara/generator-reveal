@@ -3,7 +3,7 @@ var util = require('util');
 var path = require('path');
 var yeoman = require('yeoman-generator');
 
-var RevealGenerator = module.exports = function RevealGenerator(args, options, config) {
+var RevealGenerator = module.exports = function RevealGenerator(args, options) {
   yeoman.generators.Base.apply(this, arguments);
 
   this.on('end', function () {
@@ -42,14 +42,13 @@ RevealGenerator.prototype.app = function app() {
   this.mkdir('slides');
   this.template('_index.md', 'slides/index.md');
 
-  this.template('Gruntfile.js', 'Gruntfile.js');
-  this.template('index.html', 'index.html');
+  this.template('Gruntfile.coffee', 'Gruntfile.coffee');
+  this.template('index.tpl', 'index.tpl');
 
   this.template('_package.json', 'package.json');
   this.template('_bower.json', 'bower.json');
   this.template('_config.json', 'config.json');
-  this.copy('loadtemplates.js', 'js/loadtemplates.js');
-  this.copy('main.js', 'js/main.js');
+  this.copy('loadhtmlslides.js', 'js/loadhtmlslides.js');
   this.copy('list.json', 'slides/list.json');
 };
 
