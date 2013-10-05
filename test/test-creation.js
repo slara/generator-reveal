@@ -23,8 +23,14 @@ describe('reveal generator', function () {
     var expected = [
       // add files you expect to exist here.
       '.jshintrc',
+      'index.tpl',
       '.editorconfig',
-      'package.json'
+      'package.json',
+      'Gruntfile.coffee',
+      'bower.json',
+      'config.json',
+      'js/loadhtmlslides.js',
+      'slides/list.json'
     ];
 
     helpers.mockPrompt(this.app, {

@@ -10,7 +10,7 @@ module.exports = (grunt) ->
 
             jshint:
                 files: ['*.js', '*/*.js']
-                tasks: ['jshint', 'mochatest']
+                tasks: ['jshint', 'mochaTest']
 
         coffeelint:
 
