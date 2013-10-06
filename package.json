@@ -25,7 +25,6 @@
     "yeoman-generator": "~0.13.4"
   },
   "devDependencies": {
-    "yo": ">=1.0.4",
     "generator-mocha": "~0.1.1",
     "grunt": "~0.4.1",
     "load-grunt-tasks": "~0.1.0",
