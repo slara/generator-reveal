@@ -5,9 +5,6 @@ module.exports = (grunt) ->
 
         watch:
 
-            options:
-                spawn: false
-
             livereload:
                 options:
                     livereload: true
@@ -15,7 +12,6 @@ module.exports = (grunt) ->
                     'index.html',
                     'slides/*.md',
                     'slides/*.html',
-                    'slides/list.json',
                     'js/*.js'
                 ]
 
