@@ -1,25 +1,17 @@
 # Generated on <%= (new Date).toISOString().split('T')[0] %> using <%= pkg.name %> <%= pkg.version %>
 module.exports = (grunt) ->
 
-    # Configuration.
-    yeomanConfig =
-        livereloadPort: 35729 # Recommended standard.
-
     grunt.initConfig
 
         watch:
 
-            options:
-                spawn: false
-
             livereload:
                 options:
-                    livereload: yeomanConfig.livereloadPort
+                    livereload: true
                 files: [
                     'index.html',
                     'slides/*.md',
                     'slides/*.html',
-                    'slides/list.json',
                     'js/*.js'
                 ]
 
@@ -46,16 +38,9 @@ module.exports = (grunt) ->
                     # Change hostname to '0.0.0.0' to access
                     # the server from outside.
                     hostname: 'localhost'
-                    base: require('path').resolve('.')
+                    base: '.'
                     open: true
-                    middleware: (connect, options) ->
-                        [
-                            # Add livereload middleware.
-                            require('connect-livereload')(
-                                port: yeomanConfig.livereloadPort
-                            ),
-                            connect.static(options.base)
-                        ]
+                    livereload: true
 
         coffeelint:
 
