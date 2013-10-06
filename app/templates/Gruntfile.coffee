@@ -37,10 +37,10 @@ module.exports = (grunt) ->
                     port: 9000
                     # Change hostname to '0.0.0.0' to access
                     # the server from outside.
-                    livereload: true
                     hostname: 'localhost'
                     base: '.'
                     open: true
+                    livereload: true
 
         coffeelint:
 
