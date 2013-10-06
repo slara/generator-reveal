@@ -22,7 +22,8 @@
     "test": "mocha"
   },
   "dependencies": {
-    "yeoman-generator": "~0.13.4"
+    "yeoman-generator": "~0.13.4",
+    "semver": "~2.1.0"
   },
   "devDependencies": {
     "generator-mocha": "~0.1.1",

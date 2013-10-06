@@ -2,6 +2,7 @@
 var util = require('util');
 var path = require('path');
 var yeoman = require('yeoman-generator');
+var semver = require('semver');
 
 var RevealGenerator = module.exports = function RevealGenerator(args, options) {
   yeoman.generators.Base.apply(this, arguments);
@@ -28,7 +29,14 @@ RevealGenerator.prototype.askFor = function askFor() {
   {
     name: 'packageVersion',
     message: 'What version should we put in the package.json file?',
-    default: '0.0.0'
+    default: '0.0.0',
+    validate: function (input) {
+      if (!semver.valid(input)) {
+        return 'Please enter a correct semver version, i.e. MAJOR.MINOR.PATCH.';
+      } else {
+        return true;
+      }
+    }
   }];
 
   this.prompt(prompts, function (props) {
