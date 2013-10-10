@@ -9,7 +9,7 @@ http://lab.hakim.se/reveal-js/#/
 
 Install `generator-reveal`:
 ```
-npm install generator-reveal
+npm install -g generator-reveal
 ```
 
 Make a new directory, and `cd` into it:
