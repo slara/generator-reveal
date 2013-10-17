@@ -36,7 +36,6 @@ describe 'Generator Reveal', ->
             'slides/list.json'
             'slides/index.md'
             'bower.json'
-            'config.json'
             'js/loadhtmlslides.js'
             'package.json'
         ]
