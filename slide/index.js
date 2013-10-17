@@ -9,40 +9,38 @@ var SlideGenerator = module.exports = function SlideGenerator() {
   // By calling `NamedBase` here, we get the argument to the subgenerator call
   // as `this.name`.
   yeoman.generators.NamedBase.apply(this, arguments);
-
-  console.log('You called the slide subgenerator with the argument ' + this.name + '.');
-
-  if (this.options.markdown) {
-    this.useMarkdown = true;
-    this.filename = this._.slugify(this.name) + '.md';
-    console.log('Using Markdown!', this.filename);
-  } else {
-    this.useMarkdown = false;
-    this.filename = this._.slugify(this.name) + '.html';
-    console.log('Using HTML!', this.filename);
-  }
 };
 
 util.inherits(SlideGenerator, yeoman.generators.NamedBase);
 
 SlideGenerator.prototype.files = function files() {
   var appPath = process.cwd();
-  var fullfilename = path.join(appPath, '/slides/' + this.filename);
-  if (this.useMarkdown) {
+  var fullPath = path.join(appPath, '/slides/list.json');
+  var list = require(fullPath);
+
+  if (this.options.markdown) {
+    this.filename = this._.slugify(this.name) + '.md';
+    this.log.info('Using Markdown.');
+  } else {
+    this.filename = this._.slugify(this.name) + '.html';
+    this.log.info('Using HTML.');
+  }
+
+
+  if (this.options.markdown) {
     if (this.options.notes) {
-      this.template('slide-withnotes.md', fullfilename);
+      this.template('slide-withnotes.md', 'slides/' + this.filename);
     } else {
-      this.template('slide.md', fullfilename);
+      this.template('slide.md', 'slides/' + this.filename);
     }
   } else {
     if (this.options.notes) {
-      this.template('slide-withnotes.html', fullfilename);
+      this.template('slide-withnotes.html', 'slides/' + this.filename);
     } else {
-      this.template('slide.html', fullfilename);
+      this.template('slide.html', 'slides/' + this.filename);
     }
   }
-  var fullPath = path.join(appPath, '/slides/list.json');
-  var list = require(fullPath);
+
   list.push(this.filename);
   fs.writeFileSync(fullPath, JSON.stringify(list, null, 4));
 };
