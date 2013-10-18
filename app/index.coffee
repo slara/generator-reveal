@@ -4,8 +4,8 @@ semver = require 'semver'
 
 module.exports = class RevealGenerator extends yeoman.generators.Base
 
-    constructor: (args, options, config) ->
-        super args, options, config
+    constructor: (args, options) ->
+        yeoman.generators.Base.apply @, arguments
         @on 'end', ->
             @installDependencies skipInstall: options['skip-install']
         @pkg = JSON.parse @readFileAsString path.join __dirname, '../package.json'

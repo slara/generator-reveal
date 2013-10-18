@@ -4,8 +4,8 @@ yeoman = require 'yeoman-generator'
 semver = require 'semver'
 
 module.exports = class SlideGenerator extends yeoman.generators.NamedBase
-    constructor: (args, options, config) ->
-        super args, options, config
+    constructor: ->
+        yeoman.generators.NamedBase.apply @, arguments
         @option 'notes',
             desc: 'Include speaker notes'
             type: Boolean
