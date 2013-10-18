@@ -71,6 +71,8 @@ describe 'Generator Reveal', ->
                 slide.run [], ->
                     helpers.assertFile 'slides/default.html',
                         /<h2>default<\/h2>/
+                    helpers.assertFile 'slides/list.json',
+                            /"default.html"/
 
         describe '--notes option', ->
             it 'creates html slide with notes', ->
@@ -83,6 +85,8 @@ describe 'Generator Reveal', ->
                     slide.run [], ->
                         helpers.assertFile 'slides/html-notes.html',
                             /<aside class="notes">/
+                        helpers.assertFile 'slides/list.json',
+                            /"html-notes.html"/
 
             describe 'together with --markdown', ->
                 it 'creates markdown slide with notes', ->
@@ -96,6 +100,8 @@ describe 'Generator Reveal', ->
                     slide.run [], ->
                         helpers.assertFile 'slides/markdown-notes.md',
                             /<aside data-markdown class="notes">/
+                        helpers.assertFile 'slides/list.json',
+                            /"markdown-notes.md"/
 
         describe '--markdown option', ->
             it 'creates markdown slide', ->
@@ -108,3 +114,24 @@ describe 'Generator Reveal', ->
                     slide.run {}, ->
                         helpers.assertFile 'slides/markdown.md',
                             /##  markdown/
+                        helpers.assertFile 'slides/list.json',
+                            /"markdown.md"/
+
+            describe 'together with --attributes', ->
+                it 'creates markdown slide with attributes hash in list.json', ->
+                    slide = helpers.createGenerator 'reveal:slide', [
+                        '../../slide'
+                    ], ['markdown-attributes']
+                    slide.options.attributes = true
+                    slide.options.markdown = true
+
+                    app.run {}, ->
+                    slide.run [], ->
+                        helpers.assertFile 'slides/markdown-attributes.md',
+                            /##  markdown/
+                        helpers.assertFile 'slides/list.json',
+                            /"filename": "markdown-attributes.md",/
+                        helpers.assertFile 'slides/list.json',
+                            /"attr": {/
+                        helpers.assertFile 'slides/list.json',
+                            /"data-background": "#ff0000"/

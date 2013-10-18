@@ -28,5 +28,9 @@ module.exports = class SlideGenerator extends yeoman.generators.NamedBase
             else
                 @template 'slide.html', "slides/#{@filename}"
 
-        list.push @filename
+        if @options.markdown and @options.attributes
+            list.push filename: @filename, attr: 'data-background': '#ff0000'
+        else
+            list.push @filename
+
         fs.writeFileSync fullPath, JSON.stringify list, null, 4
