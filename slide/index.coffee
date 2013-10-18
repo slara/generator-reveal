@@ -4,6 +4,20 @@ yeoman = require 'yeoman-generator'
 semver = require 'semver'
 
 module.exports = class SlideGenerator extends yeoman.generators.NamedBase
+    constructor: (args, options, config) ->
+        super args, options, config
+        @option 'notes',
+            desc: 'Include speaker notes'
+            type: Boolean
+            default: false
+        @option 'markdown',
+            desc: 'Use markdown'
+            type: Boolean
+            default: false
+        @option 'attributes',
+            desc: 'Include (data-)attributes on markdown section. This only works combinded with --markdown.'
+            type: Boolean
+            default: false
 
     files: ->
         appPath = process.cwd()
