@@ -1,32 +1,25 @@
-# Generator-reveal
+# Reveal.js generator [![Dependency Status](https://david-dm.org/slara/generator-reveal.png)](https://david-dm.org/slara/generator-reveal) [![devDependency Status](https://david-dm.org/slara/generator-reveal/dev-status.png)](https://david-dm.org/slara/generator-reveal#info=devDependencies)
 
-A Yeoman generator for the Awesome Reveal.js presentation framework.
-http://lab.hakim.se/reveal-js/#/
-
----
+A [Yeoman](http://yeoman.io) generator for the awesome [Reveal.js](http://lab.hakim.se/reveal-js/) presentation framework.
 
 ## Usage
 
-Install `generator-reveal`:
-```
-npm install -g generator-reveal
-```
+Install:  `npm install -g generator-reveal`
 
 Make a new directory, and `cd` into it:
 ```
 mkdir my-new-project && cd $_
 ```
 
-Run `yo reveal`:
-```
-yo reveal
-```
+Run `yo reveal` and start building your presentation.
 
-After all files are created you can view your slides with `grunt`
+After all files are created you can view your slides with `grunt`:
 
 ```bash
 grunt server
 ```
+
+Then, create further slides with `yo reveal:slide more-content`.
 
 ## Generators
 
