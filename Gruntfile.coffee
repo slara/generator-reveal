@@ -4,33 +4,33 @@ module.exports = (grunt) ->
 
         watch:
 
-            gruntfile:
-                files: ['Gruntfile.coffee']
-                tasks: ['coffeelint']
-
+            coffee:
+                files: ['{,*/}*.coffee']
+                tasks: ['coffeelint', 'mochaTest']
             jshint:
-                files: ['*.js', '*/*.js']
+                files: ['app/{,*/}*.js']
                 tasks: ['jshint', 'mochaTest']
 
         coffeelint:
 
             options:
-                indentation:
-                    value: 4
-            gruntfile:
-                src: ['Gruntfile.coffee']
+                grunt.file.readJSON('.coffeelintrc')
+            all:
+                src: ['{,*/}*.coffee']
 
         jshint:
-            options:
-                jshintrc: '.jshintrc'
 
+            options:
+                jshintrc: 'app/templates/jshintrc'
             all:
-                src: ['*.js', '*/*.js']
+                src: ['app/templates/*.js']
 
         mochaTest:
 
+            options:
+                require: 'coffee-script'
             all:
-                src: ['test/*.js']
+                src: ['test/*.coffee']
 
         clean:
 
@@ -46,5 +46,6 @@ module.exports = (grunt) ->
         'coffeelint',
         'jshint',
         'clean',
-        'mochaTest'
+        'mochaTest',
+        'clean'
     ]

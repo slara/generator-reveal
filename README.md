@@ -35,7 +35,7 @@ Available generators:
 * [reveal:slide](#slide)
 
 ### Slide
-Generates a Slide file. 
+Generates a Slide file.
 
 Example:
 ```bash
@@ -57,7 +57,7 @@ And the slide filename will be added to your `slides/list.json` file.
 
 ```json
 [
-    "index.md", 
+    "index.md",
     "slide-title.html"
 ]
 ```
@@ -98,6 +98,31 @@ Produces `slides/slide-title.md`
 This is a new slide
 ```
 
+##### Mardown with (Data-)Attributes
+
+Invoked with `--markdown --attributes`
+
+```bash
+yo reveal:slide "Slide Title" --markdown --attributes
+```
+adds a slide object with an `attr` key to your `slides/list.json` file. Attributes will be passed to `section` element containing the markdown.
+
+```json
+[
+    "index.md",
+    {
+        "filename": "slide-title.md",
+        "attr": {
+            "data-background": "#ff0000"
+        }
+    }
+]
+```
+
+```html
+<section data-markdown="slides/slide-title.md" data-background="#ff0000"></section>
+```
+
 ##### Speaker Notes
 
 Invoked with `--notes`
@@ -113,7 +138,7 @@ Produces `slides/slide-title.html`:
     <h2>Slide Title</h2>
 
     <p>This is a new slide</p>
-    
+
     <aside class="notes">
         Put your speaker notes here.
         You can see them pressing 's'.
