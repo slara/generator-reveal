@@ -41,11 +41,17 @@ module.exports = (grunt) ->
     # Load all grunt tasks.
     require('load-grunt-tasks')(grunt)
 
-    # Define default task.
-    grunt.registerTask 'default', [
-        'coffeelint',
-        'jshint',
-        'clean',
-        'mochaTest',
+    # Test task run by CI.
+    grunt.registerTask 'test', [
+        'coffeelint'
+        'jshint'
         'clean'
+        'mochaTest'
+        'clean'
+    ]
+
+    # Default task to get development going.
+    grunt.registerTask 'default', [
+        'test'
+        'watch'
     ]
