@@ -1,10 +1,12 @@
 {
   "name": "generator-reveal",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "A Reveal.js generator for Yeoman",
   "keywords": [
-    "generator-reveal",
-    "yeoman-generator"
+    "yeoman-generator",
+    "reveal.js",
+    "slides",
+    "presentation"
   ],
   "homepage": "https://github.com/slara/generator-reveal",
   "bugs": "https://github.com/slara/generator-reveal/issues",
@@ -13,34 +15,41 @@
     "email": "slaramen@gmail.com",
     "url": "https://github.com/slara"
   },
+  "contributors": [
+    {
+      "name": "Jan Raasch",
+      "email": "jan@janraasch.com",
+      "url": "https://github.com/janraasch"
+    }
+  ],
   "main": "app/index.js",
   "repository": {
     "type": "git",
     "url": "git://github.com/slara/generator-reveal.git"
   },
   "scripts": {
-    "test": "mocha"
+    "test": "grunt test"
+  },
+  "peerDependencies": {
+    "yo": ">=1.0.0-rc.1.1"
   },
   "dependencies": {
     "yeoman-generator": "~0.13.4",
-    "semver": "~2.1.0"
+    "semver": "~2.1.0",
+    "coffee-script": "~1.6.3"
   },
   "devDependencies": {
-    "generator-mocha": "~0.1.1",
     "grunt": "~0.4.1",
     "load-grunt-tasks": "~0.1.0",
     "grunt-coffeelint": "0.0.7",
     "grunt-mocha-test": "~0.7.0",
     "grunt-contrib-jshint": "~0.6.4",
     "grunt-contrib-clean": "~0.5.0",
-    "coffee-script": "~1.6.3"
+    "grunt-contrib-watch": "~0.5.3"
   },
   "engines": {
-    "node": ">=0.8.0"
+    "node": ">=0.8.0",
+    "npm": ">=1.2.10"
   },
-  "licenses": [
-    {
-      "type": "MIT"
-    }
-  ]
+  "license": "MIT"
 }
