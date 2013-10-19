@@ -19,7 +19,7 @@ After all files are created you can view your slides with `grunt`:
 grunt server
 ```
 
-Then, create further slides with `yo reveal:slide more-content`.
+Then, create further slides with `yo reveal:slide more-content`. See below for available [options](#options).
 
 ## Generators
 
