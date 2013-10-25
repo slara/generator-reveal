@@ -57,6 +57,24 @@ module.exports = (grunt) ->
 
             files: ['js/*.js']
 
+        copy:
+            main:
+                files: [{
+                    expand: true,
+                    src: [
+                        'slides/**',
+                        'bower_components/**',
+                        'js/**'
+                    ],
+                    dest: 'dist/'
+                },{
+                    expand: true,
+                    src: ['index.html'],
+                    dest: 'dist/',
+                    filter: 'isFile'
+                }]
+
+
     # Load all grunt tasks.
     require('load-grunt-tasks')(grunt)
 
@@ -77,6 +95,14 @@ module.exports = (grunt) ->
             'watch'
         ]
 
+    grunt.registerTask 'build', [
+
+        'coffeelint',
+        'jshint',
+        'build:index',
+        'copy'
+    ]
+
     # Define default task.
     grunt.registerTask 'default', [
         'coffeelint',
@@ -85,3 +111,4 @@ module.exports = (grunt) ->
         'connect:livereload',
         'watch'
     ]
+
