@@ -2,6 +2,7 @@ path = require 'path'
 helpers = require('yeoman-generator').test
 
 describe 'Generator Reveal', ->
+    # SUT object.
     app = {}
 
     beforeEach (done) ->
@@ -48,11 +49,26 @@ describe 'Generator Reveal', ->
 
     it 'generates package.json with correct version', (done) ->
         helpers.mockPrompt app,
-            presentationTitle: 'package.json test',
+            presentationTitle: 'package.json test'
             packageVersion: '1.2.3'
 
         app.run {}, ->
             helpers.assertFile 'package.json', /"version": "1.2.3"/
+            done()
+
+    it 'generates SASS support for themes', (done) ->
+        helpers.mockPrompt app,
+            presentationTitle: 'SASS Support 4 Custom Themes'
+            packageVersion: '0.0.1'
+            useSass: true
+
+        app.run {}, ->
+            helpers.assertFile 'css/source/theme.scss', /@import "..\/..\/bower_components\/reveal.js\/css\/theme\/template\/theme";/
+            helpers.assertFile 'Gruntfile.coffee', /sass:/
+            helpers.assertFile 'Gruntfile.coffee', /'css\/\*.css'/
+            helpers.assertFile 'Gruntfile.coffee', /'css\/theme.css': 'css\/source\/theme.scss'/
+            helpers.assertFile 'index.tpl', /<link rel="stylesheet" href="css\/theme.css" id="theme">/
+            helpers.assertFile 'package.json', /"grunt-contrib-sass"/
             done()
 
     describe 'Sub-Generator Slide', ->
@@ -73,6 +89,24 @@ describe 'Generator Reveal', ->
                         /<h2>default<\/h2>/
                     helpers.assertFile 'slides/list.json',
                             /"default.html"/
+
+        describe '--attributes option', ->
+            it 'creates html slide with attributes hash in list.json', ->
+                slide = helpers.createGenerator 'reveal:slide', [
+                    '../../slide'
+                ], ['html-attributes']
+                slide.options.attributes = true
+
+                app.run {}, ->
+                slide.run [], ->
+                    helpers.assertFile 'slides/html-attributes.html',
+                        /<h2>html-attributes<\/h2>/
+                    helpers.assertFile 'slides/list.json',
+                        /"filename": "html-attributes.html",/
+                    helpers.assertFile 'slides/list.json',
+                        /"attr": {/
+                    helpers.assertFile 'slides/list.json',
+                        /"data-background": "#ff0000"/
 
         describe '--notes option', ->
             it 'creates html slide with notes', ->
@@ -99,7 +133,7 @@ describe 'Generator Reveal', ->
                     app.run {}, ->
                     slide.run [], ->
                         helpers.assertFile 'slides/markdown-notes.md',
-                            /<aside data-markdown class="notes">/
+                            /notes:/
                         helpers.assertFile 'slides/list.json',
                             /"markdown-notes.md"/
 

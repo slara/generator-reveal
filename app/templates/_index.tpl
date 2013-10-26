@@ -12,7 +12,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
         <link rel="stylesheet" href="bower_components/reveal.js/css/reveal.min.css">
+    <% if (useSass) { %>
+        <link rel="stylesheet" href="css/theme.css" id="theme">
+    <% } else { %>
         <link rel="stylesheet" href="bower_components/reveal.js/css/theme/default.css" id="theme">
+    <% } %>
 
         <!-- For syntax highlighting -->
         <link rel="stylesheet" href="bower_components/reveal.js/lib/css/zenburn.css" id="highlight-theme">
@@ -35,30 +39,24 @@
 
                 <%% _.forEach(slides, function(slide) { %>
                     <%% if (!_.isString(slide) && !_.isArray(slide) && _.isObject(slide)) { %>
-                        <section <%%= _.map(slide.attr, function (val, attr) {return attr + '="' + val + '"'}).join(' ')%> data-markdown="slides/<%%= slide.filename %>"></section>
+                        <section <%%= _.map(slide.attr, function (val, attr) {return attr + '="' + val + '"'}).join(' ')%> <%% if (_.isString(slide.filename)) { %>data-<%% if (slide.filename.indexOf('.html') !== -1) { %>html<%% } else { %>markdown<%% }%>="slides/<%%= slide.filename %>"<%% } %>></section>
                     <%% } %>
                     <%% if (_.isString(slide)) { %>
-                        <%% if (slide.indexOf('.html') !== -1) { %>
-                            <section data-html="slides/<%%= slide %>"></section>
-                        <%% } else { if (slide.indexOf('.md') !== -1) { %>
-                            <section data-markdown="slides/<%%= slide %>"></section>
-                        <%% }} %>
-                    <%% } else { if (_.isArray(slide)) { %>
+                        <section data-<%% if (slide.indexOf('.html') !== -1) { %>html<%% } else { %>markdown<%% }%>="slides/<%%= slide %>"></section>
+                    <%% } %>
+                    <%% if (_.isArray(slide)) { %>
                         <section>
                             <%% _.forEach(slide, function(verticalslide) { %>
                                 <%% if (!_.isString(verticalslide) && _.isObject(verticalslide)) { %>
-                                    <section <%%= _.map(slide.attr, function (val, attr) {return attr + '="' + val + '"'}).join(' ')%> data-markdown="slides/<%%= slide.filename %>"></section>
+                                    <section <%%= _.map(verticalslide.attr, function (val, attr) {return attr + '="' + val + '"'}).join(' ')%> <%% if (_.isString(verticalslide.filename)) { %>data-<%% if (verticalslide.filename.indexOf('.html') !== -1) { %>markdown<%% } else { %>html<%% }%>="slides/<%%= verticalslide.filename %>"<%% } %>></section>
                                 <%% } %>
-                                <%% if (verticalslide.indexOf('.html') !== -1) { %>
-                                    <section data-html="slides/<%%= verticalslide %>"></section>
-                                <%% } else { if (verticalslide.indexOf('.md') !== -1) { %>
-                                    <section data-markdown="slides/<%%= verticalslide %>"></section>
-                                <%% }} %>
+                                <%% if (_.isString(verticalslide)) { %>
+                                    <section data-<%% if (verticalslide.indexOf('.html') !== -1) { %>html<%% } else { %>markdown<%% }%>="slides/<%%= verticalslide %>"></section>
+                                <%% } %>
                             <%% }); %>
                         </section>
-                    <%% }} %>
+                    <%% } %>
                 <%% }); %>
-
             </div>
 
         </div>

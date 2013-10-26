@@ -1,0 +1,7 @@
+app/index.coffee
+slide/index.coffee
+.travis.yml
+.npmignore
+npm-debug.log
+.node-version
+.DS_Store

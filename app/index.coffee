@@ -18,6 +18,7 @@ module.exports = class RevealGenerator extends yeoman.generators.Base
             {
                 name: 'presentationTitle'
                 message: 'What are you going to talk about?'
+                default: 'My Topic Of Choice'
             }
             {
                 name: 'packageVersion'
@@ -27,14 +28,20 @@ module.exports = class RevealGenerator extends yeoman.generators.Base
                     return 'Please enter a correct semver version, i.e. MAJOR.MINOR.PATCH.' unless semver.valid input
                     true
             }
+            {
+                name: 'useSass'
+                message: 'Do you want to use SASS to create a custom theme? This requires you to have Ruby and Sass installed.'
+                type: 'confirm'
+                default: false
+            }
         ]
         @prompt prompts, (props) =>
             @presentationTitle = props.presentationTitle
             @packageVersion = props.packageVersion
+            @useSass = props.useSass
             cb()
 
     app: ->
-        @mkdir 'slides'
         @template '_index.md', 'slides/index.md'
         @template '_Gruntfile.coffee', 'Gruntfile.coffee'
         @template '_index.tpl', 'index.tpl'
@@ -42,6 +49,8 @@ module.exports = class RevealGenerator extends yeoman.generators.Base
         @template '_bower.json', 'bower.json'
         @copy 'loadhtmlslides.js', 'js/loadhtmlslides.js'
         @copy 'list.json', 'slides/list.json'
+
+        @copy 'theme.scss', 'css/source/theme.scss' if @useSass
 
     projectfiles: ->
         @copy 'editorconfig', '.editorconfig'

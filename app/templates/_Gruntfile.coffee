@@ -9,15 +9,16 @@ module.exports = (grunt) ->
                 options:
                     livereload: true
                 files: [
-                    'index.html',
-                    'slides/*.md',
-                    'slides/*.html',
-                    'js/*.js'
+                    'index.html'
+                    'slides/*.md'
+                    'slides/*.html'
+                    'js/*.js'<% if (useSass) { %>
+                    'css/*.css'<% } %>
                 ]
 
             index:
                 files: [
-                    'index.tpl',
+                    'index.tpl'
                     'slides/list.json'
                 ]
                 tasks: ['build:index']
@@ -29,7 +30,17 @@ module.exports = (grunt) ->
             jshint:
                 files: ['js/*.js']
                 tasks: ['jshint']
+        <% if (useSass) { %>
+            sass:
+                files: ['css/source/theme.scss']
+                tasks: ['sass']
 
+        sass:
+
+            theme:
+                files:
+                    'css/theme.css': 'css/source/theme.scss'
+        <% } %>
         connect:
 
             livereload:
@@ -48,29 +59,31 @@ module.exports = (grunt) ->
                 indentation:
                     value: 4
 
-            files: ['Gruntfile.coffee']
+            all: ['Gruntfile.coffee']
 
         jshint:
 
             options:
                 jshintrc: '.jshintrc'
 
-            files: ['js/*.js']
+            all: ['js/*.js']
 
         copy:
-            main:
+
+            dist:
                 files: [{
-                    expand: true,
+                    expand: true
                     src: [
-                        'slides/**',
-                        'bower_components/**',
-                        'js/**'
-                    ],
+                        'slides/**'
+                        'bower_components/**'
+                        'js/**'<% if (useSass) { %>
+                        'css/*.css'<% } %>
+                    ]
                     dest: 'dist/'
                 },{
-                    expand: true,
-                    src: ['index.html'],
-                    dest: 'dist/',
+                    expand: true
+                    src: ['index.html']
+                    dest: 'dist/'
                     filter: 'isFile'
                 }]
 
@@ -88,27 +101,30 @@ module.exports = (grunt) ->
                     slides
             grunt.file.write 'index.html', html
 
+    grunt.registerTask 'test',
+        '*Lint* javascript and coffee files.', [
+            'coffeelint'
+            'jshint'
+        ]
+
     grunt.registerTask 'server',
         'Run presentation locally and start watch process (living document).', [
-            'build:index',
-            'connect:livereload',
+            'build:index'<% if (useSass) { %>
+            'sass'<% } %>
+            'connect:livereload'
             'watch'
         ]
 
-    grunt.registerTask 'build', [
-
-        'coffeelint',
-        'jshint',
-        'build:index',
-        'copy'
-    ]
+    grunt.registerTask 'dist',
+        'Save presentation files to *dist* directory.', [
+            'test'<% if (useSass) { %>
+            'sass'<% } %>
+            'build:index'
+            'copy'
+        ]
 
     # Define default task.
     grunt.registerTask 'default', [
-        'coffeelint',
-        'jshint',
-        'build:index',
-        'connect:livereload',
-        'watch'
+        'test'
+        'server'
     ]
-
