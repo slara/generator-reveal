@@ -2,7 +2,7 @@
 
 ## v0.3.0
 ### Changes
-- Rename `grunt build` to `grunt dist`
+- Add `grunt dist` task.
 - Add optional `sass` support for custom themes.
 - Clean up API: HTML slides behave the same as markdown slides:
     * Both may use the `--attributes` option.
@@ -10,10 +10,6 @@
     * Support `{}`, `{"attr": "some-attr"}`, `{"filename":"some-filename"}` and `{"attr": "some-attr", "filename":"some-filename"}` as valid slide `Objects` in the `slides/list.json` `Array`.
 - Add Changelog :)
 - Remove `coffee-script` as a production dependency.
-
-## v0.2.1
-### Changes
-- Add `grunt build` task.
 
 ## v0.2.0
 ### Changes
