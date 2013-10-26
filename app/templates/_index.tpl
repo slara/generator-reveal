@@ -39,7 +39,7 @@
 
                 <%% _.forEach(slides, function(slide) { %>
                     <%% if (!_.isString(slide) && !_.isArray(slide) && _.isObject(slide)) { %>
-                        <section <%%= _.map(slide.attr, function (val, attr) {return attr + '="' + val + '"'}).join(' ')%> data-<%% if (slide.filename.indexOf('.html') !== -1) { %>html<%% } else { %>markdown<%% }%>="slides/<%%= slide.filename %>"></section>
+                        <section <%%= _.map(slide.attr, function (val, attr) {return attr + '="' + val + '"'}).join(' ')%> <%% if (_.isString(slide.filename)) { %>data-<%% if (slide.filename.indexOf('.html') !== -1) { %>html<%% } else { %>markdown<%% }%>="slides/<%%= slide.filename %>"<%% } %>></section>
                     <%% } %>
                     <%% if (_.isString(slide)) { %>
                         <section data-<%% if (slide.indexOf('.html') !== -1) { %>html<%% } else { %>markdown<%% }%>="slides/<%%= slide %>"></section>
@@ -48,7 +48,7 @@
                         <section>
                             <%% _.forEach(slide, function(verticalslide) { %>
                                 <%% if (!_.isString(verticalslide) && _.isObject(verticalslide)) { %>
-                                    <section <%%= _.map(slide.attr, function (val, attr) {return attr + '="' + val + '"'}).join(' ')%> data-<%% if (slide.filename.indexOf('.html') !== -1) { %>markdown<%% } else { %>html<%% }%>="slides/<%%= slide.filename %>"></section>
+                                    <section <%%= _.map(verticalslide.attr, function (val, attr) {return attr + '="' + val + '"'}).join(' ')%> <%% if (_.isString(verticalslide.filename)) { %>data-<%% if (verticalslide.filename.indexOf('.html') !== -1) { %>markdown<%% } else { %>html<%% }%>="slides/<%%= verticalslide.filename %>"<%% } %>></section>
                                 <%% } %>
                                 <%% if (_.isString(verticalslide)) { %>
                                     <section data-<%% if (verticalslide.indexOf('.html') !== -1) { %>html<%% } else { %>markdown<%% }%>="slides/<%%= verticalslide %>"></section>

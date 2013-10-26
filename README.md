@@ -71,6 +71,21 @@ In order to add vertical slides, you can nest an array inside `slides/list.json`
 ]
 ```
 
+#### Simple (Image) Slides
+
+Sometimes you just want a slide with a background image. That's okay, a slide object does not need a filename.
+
+```json
+[
+    "index.md",
+    {
+        "attr": {
+            "data-background": "http://example.com/image.png"
+        }
+    }
+]
+```
+
 #### Options
 
 ##### Markdown
