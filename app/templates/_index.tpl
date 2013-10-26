@@ -12,7 +12,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
         <link rel="stylesheet" href="bower_components/reveal.js/css/reveal.min.css">
+    <% if (useSass) { %>
+        <link rel="stylesheet" href="css/theme.css" id="theme">
+    <% } else { %>
         <link rel="stylesheet" href="bower_components/reveal.js/css/theme/default.css" id="theme">
+    <% } %>
 
         <!-- For syntax highlighting -->
         <link rel="stylesheet" href="bower_components/reveal.js/lib/css/zenburn.css" id="highlight-theme">

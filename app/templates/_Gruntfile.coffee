@@ -12,7 +12,8 @@ module.exports = (grunt) ->
                     'index.html'
                     'slides/*.md'
                     'slides/*.html'
-                    'js/*.js'
+                    'js/*.js'<% if (useSass) { %>
+                    'css/*.css'<% } %>
                 ]
 
             index:
@@ -29,7 +30,17 @@ module.exports = (grunt) ->
             jshint:
                 files: ['js/*.js']
                 tasks: ['jshint']
+        <% if (useSass) { %>
+            sass:
+                files: ['css/source/theme.scss']
+                tasks: ['sass']
 
+        sass:
+
+            theme:
+                files:
+                    'css/theme.css': 'css/source/theme.scss'
+        <% } %>
         connect:
 
             livereload:
@@ -65,7 +76,8 @@ module.exports = (grunt) ->
                     src: [
                         'slides/**'
                         'bower_components/**'
-                        'js/**'
+                        'js/**'<% if (useSass) { %>
+                        'css/*.css'<% } %>
                     ]
                     dest: 'dist/'
                 },{
@@ -97,14 +109,16 @@ module.exports = (grunt) ->
 
     grunt.registerTask 'server',
         'Run presentation locally and start watch process (living document).', [
-            'build:index'
+            'build:index'<% if (useSass) { %>
+            'sass'<% } %>
             'connect:livereload'
             'watch'
         ]
 
     grunt.registerTask 'dist',
         'Save presentation files to *dist* directory.', [
-            'test'
+            'test'<% if (useSass) { %>
+            'sass'<% } %>
             'build:index'
             'copy'
         ]
