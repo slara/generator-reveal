@@ -35,30 +35,24 @@
 
                 <%% _.forEach(slides, function(slide) { %>
                     <%% if (!_.isString(slide) && !_.isArray(slide) && _.isObject(slide)) { %>
-                        <section <%%= _.map(slide.attr, function (val, attr) {return attr + '="' + val + '"'}).join(' ')%> data-markdown="slides/<%%= slide.filename %>"></section>
+                        <section <%%= _.map(slide.attr, function (val, attr) {return attr + '="' + val + '"'}).join(' ')%> data-<%% if (slide.filename.indexOf('.html') !== -1) { %>html<%% } else { %>markdown<%% }%>="slides/<%%= slide.filename %>"></section>
                     <%% } %>
                     <%% if (_.isString(slide)) { %>
-                        <%% if (slide.indexOf('.html') !== -1) { %>
-                            <section data-html="slides/<%%= slide %>"></section>
-                        <%% } else { if (slide.indexOf('.md') !== -1) { %>
-                            <section data-markdown="slides/<%%= slide %>"></section>
-                        <%% }} %>
-                    <%% } else { if (_.isArray(slide)) { %>
+                        <section data-<%% if (slide.indexOf('.html') !== -1) { %>html<%% } else { %>markdown<%% }%>="slides/<%%= slide %>"></section>
+                    <%% } %>
+                    <%% if (_.isArray(slide)) { %>
                         <section>
                             <%% _.forEach(slide, function(verticalslide) { %>
                                 <%% if (!_.isString(verticalslide) && _.isObject(verticalslide)) { %>
-                                    <section <%%= _.map(slide.attr, function (val, attr) {return attr + '="' + val + '"'}).join(' ')%> data-markdown="slides/<%%= slide.filename %>"></section>
+                                    <section <%%= _.map(slide.attr, function (val, attr) {return attr + '="' + val + '"'}).join(' ')%> data-<%% if (slide.filename.indexOf('.html') !== -1) { %>markdown<%% } else { %>html<%% }%>="slides/<%%= slide.filename %>"></section>
                                 <%% } %>
-                                <%% if (verticalslide.indexOf('.html') !== -1) { %>
-                                    <section data-html="slides/<%%= verticalslide %>"></section>
-                                <%% } else { if (verticalslide.indexOf('.md') !== -1) { %>
-                                    <section data-markdown="slides/<%%= verticalslide %>"></section>
-                                <%% }} %>
+                                <%% if (_.isString(verticalslide)) { %>
+                                    <section data-<%% if (verticalslide.indexOf('.html') !== -1) { %>html<%% } else { %>markdown<%% }%>="slides/<%%= verticalslide %>"></section>
+                                <%% } %>
                             <%% }); %>
                         </section>
-                    <%% }} %>
+                    <%% } %>
                 <%% }); %>
-
             </div>
 
         </div>

@@ -19,7 +19,7 @@ After all files are created you can view your slides with `grunt`:
 grunt server
 ```
 
-Then, create further slides with `yo reveal:slide more-content`. See below for available [options](#options).
+Then, create further slides with `yo reveal:slide more-content`. See below for available [options](#options). When you want to export your presentation to some static HTML server, you can type `grunt dist` to have all your relevant files saved to the `dist` directory.
 
 ## Generators
 
@@ -38,12 +38,9 @@ yo reveal:slide "Slide Title"
 Produces `slides/slide-title.html`:
 
 ```html
-<section>
-    <h2>Slide Title</h2>
+<h2>Slide Title</h2>
 
-    <p>This is a new slide</p>
-</section>
-
+<p>This is a new slide</p>
 ```
 
 And the slide filename will be added to your `slides/list.json` file.
@@ -83,7 +80,9 @@ Invoked with `--markdown`
 ```bash
 yo reveal:slide "Slide Title" --markdown
 ```
+
 Produces `slides/slide-title.md`
+
 
 ```markdown
 ## Slide Title
@@ -91,14 +90,15 @@ Produces `slides/slide-title.md`
 This is a new slide
 ```
 
-##### Mardown with (Data-)Attributes
+##### Attributes
 
-Invoked with `--markdown --attributes`
+Invoked with `--attributes`
 
 ```bash
-yo reveal:slide "Slide Title" --markdown --attributes
+yo reveal:slide "Slide Title" --attributes
 ```
-adds a slide object with an `attr` key to your `slides/list.json` file. Attributes will be passed to `section` element containing the markdown.
+
+adds a slide `Object` with an `attr` key to your `slides/list.json` file. Attributes will be passed to `section` element containing the slide.
 
 ```json
 [
@@ -127,19 +127,21 @@ yo reveal:slide "Slide Title" --notes
 Produces `slides/slide-title.html`:
 
 ```html
-<section>
-    <h2>Slide Title</h2>
+<h2>Slide Title</h2>
 
-    <p>This is a new slide</p>
+<p>This is a new slide</p>
 
-    <aside class="notes">
-        Put your speaker notes here.
-        You can see them pressing 's'.
-    </aside>
-</section>
-
+<aside class="notes">
+    Put your speaker notes here.
+    You can see them pressing 's'.
+</aside>
 ```
-For markdown, just add `--markdown`.
+
+All three options maybe combined, e.g.
+
+```bash
+yo reveal:slide "Markdown Slide With Notes And Section-Attributes" --notes --attributes --markdown
+```
 
 ## License
 [MIT License](http://en.wikipedia.org/wiki/MIT_License)

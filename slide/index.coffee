@@ -15,7 +15,7 @@ module.exports = class SlideGenerator extends yeoman.generators.NamedBase
             type: Boolean
             default: false
         @option 'attributes',
-            desc: 'Include (data-)attributes on markdown section. This only works combinded with --markdown.'
+            desc: 'Include attributes on slide sections, e.g. data-background, class, etc.'
             type: Boolean
             default: false
 
@@ -42,9 +42,11 @@ module.exports = class SlideGenerator extends yeoman.generators.NamedBase
             else
                 @template 'slide.html', "slides/#{@filename}"
 
-        if @options.markdown and @options.attributes
+        if @options.attributes
+            @log.info "Appending slides/#{@filename} to slides/list.json."
             list.push filename: @filename, attr: 'data-background': '#ff0000'
         else
+            @log.info "Appending slides/#{@filename} to slides/list.json."
             list.push @filename
 
         fs.writeFileSync fullPath, JSON.stringify list, null, 4
