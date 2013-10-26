@@ -6,7 +6,7 @@ module.exports = (grunt) ->
 
             coffee:
                 files: ['{,*/}*.coffee']
-                tasks: ['coffeelint', 'mochaTest']
+                tasks: ['coffeelint', 'coffee', 'mochaTest']
             jshint:
                 files: ['app/{,*/}*.js']
                 tasks: ['jshint', 'mochaTest']
@@ -17,6 +17,13 @@ module.exports = (grunt) ->
                 grunt.file.readJSON('.coffeelintrc')
             all:
                 src: ['{,*/}*.coffee']
+
+        coffee:
+
+            compile:
+                expand: true
+                src: ['app/index.coffee', 'slide/index.coffee']
+                ext: '.js'
 
         jshint:
 
@@ -43,6 +50,7 @@ module.exports = (grunt) ->
 
     # Test task run by CI.
     grunt.registerTask 'test', [
+        'coffee'
         'coffeelint'
         'jshint'
         'clean'
