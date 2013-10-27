@@ -4,7 +4,7 @@
     <head>
         <meta charset="utf-8">
 
-        <title><%= _.capitalize(presentationTitle) %></title>
+        <title><%= _.capitalize(config.get('presentationTitle')) %></title>
 
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
@@ -12,7 +12,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
         <link rel="stylesheet" href="bower_components/reveal.js/css/reveal.min.css">
-    <% if (useSass) { %>
+    <% if (config.get('useSass')) { %>
         <link rel="stylesheet" href="css/theme.css" id="theme">
     <% } else { %>
         <link rel="stylesheet" href="bower_components/reveal.js/css/theme/default.css" id="theme">

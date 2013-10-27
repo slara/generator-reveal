@@ -14,7 +14,11 @@ describe 'Generator Reveal', ->
             ]
             app.options['skip-install'] = true
 
-            done()
+            # May have to wait for app.config to be written
+            # to file system as saving is debounced by 5 milliseconds.
+            # Not waiting here, may result in
+            # ERROR with `rm -rf` of testDirectory.
+            setTimeout done, 10
 
     it 'should generate dotfiles', (done) ->
         expected = [
@@ -22,6 +26,7 @@ describe 'Generator Reveal', ->
             '.editorconfig'
             '.gitignore'
             '.jshintrc'
+            '.yo-rc.json'
         ]
 
         helpers.mockPrompt app, {}
@@ -55,6 +60,37 @@ describe 'Generator Reveal', ->
         app.run {}, ->
             helpers.assertFile 'package.json', /"version": "1.2.3"/
             done()
+
+    it 'uses defaults for .yo-rc.json config', (done) ->
+        # Skip user input, since we
+        # really want to check the defaults.
+        app.askFor = ->
+
+        app.run {}, ->
+            # Wait for config to be written.
+            setTimeout ->
+                helpers.assertFile '.yo-rc.json', /"generator-reveal"/
+                helpers.assertFile '.yo-rc.json', /"useSass": false/
+                helpers.assertFile '.yo-rc.json', /"presentationTitle": "Reveal.js and Yeoman is Awesomeness"/
+                helpers.assertFile '.yo-rc.json', /"packageVersion": "0.0.0"/
+                done()
+            , 10
+
+    it 'updates .yo-rc.json config according to prompt input', (done) ->
+        helpers.mockPrompt app,
+            presentationTitle: 'ICanHazConfig'
+            packageVersion: '0.1.0'
+            useSass: true
+
+        app.run {}, ->
+            # Wait for config to be written.
+            setTimeout ->
+                helpers.assertFile '.yo-rc.json', /"generator-reveal"/
+                helpers.assertFile '.yo-rc.json', /"useSass": true/
+                helpers.assertFile '.yo-rc.json', /"presentationTitle": "ICanHazConfig"/
+                helpers.assertFile '.yo-rc.json', /"packageVersion": "0.1.0"/
+                done()
+            , 10
 
     it 'generates SASS support for themes', (done) ->
         helpers.mockPrompt app,
