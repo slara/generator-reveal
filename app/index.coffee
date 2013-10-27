@@ -6,10 +6,18 @@ module.exports = class RevealGenerator extends yeoman.generators.Base
 
     constructor: (args, options) ->
         yeoman.generators.Base.apply @, arguments
-        @on 'end', ->
-            @installDependencies skipInstall: options['skip-install']
         @pkg = JSON.parse @readFileAsString path.join __dirname, '../package.json'
 
+        # Setup config defaults.
+        @config.defaults
+            presentationTitle: 'Reveal.js and Yeoman is Awesomeness'
+            packageVersion: '0.0.0'
+            useSass: false
+
+        # When we are done:
+        @on 'end', ->
+            # Install deps.
+            @installDependencies skipInstall: options['skip-install']
     askFor: ->
         cb = @async()
         # Have Yeoman greet the user.
@@ -18,12 +26,12 @@ module.exports = class RevealGenerator extends yeoman.generators.Base
             {
                 name: 'presentationTitle'
                 message: 'What are you going to talk about?'
-                default: 'My Topic Of Choice'
+                default: @config.get 'presentationTitle'
             }
             {
                 name: 'packageVersion'
                 message: 'What version should we put in the package.json file?'
-                default: '0.0.0'
+                default: @config.get 'packageVersion'
                 validate: (input) ->
                     return 'Please enter a correct semver version, i.e. MAJOR.MINOR.PATCH.' unless semver.valid input
                     true
@@ -32,13 +40,14 @@ module.exports = class RevealGenerator extends yeoman.generators.Base
                 name: 'useSass'
                 message: 'Do you want to use SASS to create a custom theme? This requires you to have Ruby and Sass installed.'
                 type: 'confirm'
-                default: false
+                default: @config.get 'useSass'
             }
         ]
         @prompt prompts, (props) =>
-            @presentationTitle = props.presentationTitle
-            @packageVersion = props.packageVersion
-            @useSass = props.useSass
+            # Write answers to `config`.
+            @config.set 'presentationTitle', props.presentationTitle
+            @config.set 'packageVersion', props.packageVersion
+            @config.set 'useSass', props.useSass
             cb()
 
     app: ->
@@ -50,7 +59,7 @@ module.exports = class RevealGenerator extends yeoman.generators.Base
         @copy 'loadhtmlslides.js', 'js/loadhtmlslides.js'
         @copy 'list.json', 'slides/list.json'
 
-        @copy 'theme.scss', 'css/source/theme.scss' if @useSass
+        @copy 'theme.scss', 'css/source/theme.scss' if @config.get 'useSass'
 
     projectfiles: ->
         @copy 'editorconfig', '.editorconfig'

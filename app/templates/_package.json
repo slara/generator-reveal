@@ -1,9 +1,9 @@
 {
-  "name": "<%= _.slugify(presentationTitle) %>",
-  "version": "<%= packageVersion %>",
+  "name": "<%= _.slugify(config.get('presentationTitle')) %>",
+  "version": "<%= config.get('packageVersion') %>",
   "private": true,
   "devDependencies": {
-    "grunt": "~0.4.1",<% if (useSass) { %>
+    "grunt": "~0.4.1",<% if (config.get('useSass')) { %>
     "grunt-contrib-sass": "0.5.0",<% } %>
     "grunt-contrib-connect": "~0.5.0",
     "grunt-contrib-watch": "~0.5.3",

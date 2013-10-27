@@ -1,6 +1,6 @@
 {
-  "name": "<%= _.slugify(presentationTitle) %>",
-  "version": "<%= packageVersion %>",
+  "name": "<%= _.slugify(config.get('presentationTitle')) %>",
+  "version": "<%= config.get('packageVersion') %>",
   "dependencies": {
     "reveal.js": "master"
   }
