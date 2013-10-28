@@ -12,6 +12,9 @@
 - Add Changelog :)
 - Remove `coffee-script` as a production dependency.
 
+### Fixes
+- [Support for vertical slides](https://github.com/slara/generator-reveal/pull/27)
+
 ## v0.2.0
 ### Changes
 - Rewritten in Coffee, but keeping API compatibility.
