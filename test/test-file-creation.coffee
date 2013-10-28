@@ -170,7 +170,7 @@ describe 'Generator Reveal', ->
                     app.run {}, ->
                     slide.run [], ->
                         helpers.assertFile 'slides/markdown-notes.md',
-                            /notes:/
+                            /note:/
                         helpers.assertFile 'slides/list.json',
                             /"markdown-notes.md"/
 

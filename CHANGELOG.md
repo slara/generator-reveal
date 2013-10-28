@@ -1,5 +1,12 @@
 # Changelog
 
+## v0.3.1
+### Changes
+- Lock down version of `reveal.js` in `bower.json` to specific commit.
+
+### Fixes
+- [Typo in markdown slide with notes](https://github.com/slara/generator-reveal/issues/28)
+
 ## v0.3.0
 ### Changes
 - Add `grunt dist` task.
