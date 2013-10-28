@@ -1,7 +1,13 @@
 app/index.coffee
 slide/index.coffee
+test/temp
+test/*.coffee
+Gruntfile.coffee
+.coffeelintrc
+.editorconfig
 .travis.yml
 .npmignore
+.gitattributes
 npm-debug.log
 .node-version
 .DS_Store
