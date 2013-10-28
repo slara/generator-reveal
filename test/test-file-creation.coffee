@@ -38,7 +38,8 @@ describe 'Generator Reveal', ->
     it 'generates expected boilerplate files', (done) ->
         expected = [
             'Gruntfile.coffee'
-            'index.tpl'
+            'templates/_index.html'
+            'templates/_section.html'
             'slides/list.json'
             'slides/index.md'
             'bower.json'
@@ -103,7 +104,7 @@ describe 'Generator Reveal', ->
             helpers.assertFile 'Gruntfile.coffee', /sass:/
             helpers.assertFile 'Gruntfile.coffee', /'css\/\*.css'/
             helpers.assertFile 'Gruntfile.coffee', /'css\/theme.css': 'css\/source\/theme.scss'/
-            helpers.assertFile 'index.tpl', /<link rel="stylesheet" href="css\/theme.css" id="theme">/
+            helpers.assertFile 'templates/_index.html', /<link rel="stylesheet" href="css\/theme.css" id="theme">/
             helpers.assertFile 'package.json', /"grunt-contrib-sass"/
             done()
 

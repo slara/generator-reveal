@@ -53,7 +53,8 @@ module.exports = class RevealGenerator extends yeoman.generators.Base
     app: ->
         @template '_index.md', 'slides/index.md'
         @template '_Gruntfile.coffee', 'Gruntfile.coffee'
-        @template '_index.tpl', 'index.tpl'
+        @template '__index.html', 'templates/_index.html'
+        @template '__section.html', 'templates/_section.html'
         @template '_package.json', 'package.json'
         @template '_bower.json', 'bower.json'
         @copy 'loadhtmlslides.js', 'js/loadhtmlslides.js'

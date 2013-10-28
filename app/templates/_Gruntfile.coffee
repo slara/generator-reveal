@@ -18,10 +18,11 @@ module.exports = (grunt) ->
 
             index:
                 files: [
-                    'index.tpl'
+                    'templates/_index.html'
+                    'templates/_section.html'
                     'slides/list.json'
                 ]
-                tasks: ['build:index']
+                tasks: ['buildIndex']
 
             coffeelint:
                 files: ['Gruntfile.coffee']
@@ -91,14 +92,20 @@ module.exports = (grunt) ->
     # Load all grunt tasks.
     require('load-grunt-tasks')(grunt)
 
-    grunt.registerTask 'build:index',
-        'Build index.html from index.tpl and slides/list.json.',
+    grunt.registerTask 'buildIndex',
+        'Build index.html from templates/_index.html and slides/list.json.',
         ->
-            template = grunt.file.read 'index.tpl'
+            indexTemplate = grunt.file.read 'templates/_index.html'
+            sectionTemplate = grunt.file.read 'templates/_section.html'
             slides = grunt.file.readJSON 'slides/list.json'
-            html = grunt.template.process template, data:
+
+            html = grunt.template.process indexTemplate, data:
                 slides:
                     slides
+                section: (slide) ->
+                    grunt.template.process sectionTemplate, data:
+                        slide:
+                            slide
             grunt.file.write 'index.html', html
 
     grunt.registerTask 'test',
@@ -109,7 +116,7 @@ module.exports = (grunt) ->
 
     grunt.registerTask 'server',
         'Run presentation locally and start watch process (living document).', [
-            'build:index'<% if (config.get('useSass')) { %>
+            'buildIndex'<% if (config.get('useSass')) { %>
             'sass'<% } %>
             'connect:livereload'
             'watch'
@@ -119,7 +126,7 @@ module.exports = (grunt) ->
         'Save presentation files to *dist* directory.', [
             'test'<% if (config.get('useSass')) { %>
             'sass'<% } %>
-            'build:index'
+            'buildIndex'
             'copy'
         ]
 

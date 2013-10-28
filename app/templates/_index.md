@@ -7,4 +7,4 @@ From the terminal, pop in:
 
 Available options:
 
- ```--markdown --attributes --notes``
+ ```--markdown --attributes --notes```
