@@ -1,11 +1,11 @@
-assert  = require 'assert'
+expect = require('chai').expect
 
 describe 'Generator Reveal', ->
     it 'can be imported without blowing up', ->
         app = require '../app'
-        assert.ok app
+        (expect app).to.be.ok
 
 describe 'Sub-Generator Slide', ->
     it 'can be imported without blowing up', ->
         slide = require '../slide'
-        assert.ok slide
+        (expect slide).to.be.ok
