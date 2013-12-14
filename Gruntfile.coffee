@@ -14,7 +14,7 @@ module.exports = (grunt) ->
         coffeelint:
 
             options:
-                grunt.file.readJSON('.coffeelintrc')
+                configFile: '.coffeelintrc'
             all:
                 src: ['{,*/}*.coffee']
 
