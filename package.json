@@ -29,7 +29,7 @@
   },
   "scripts": {
     "test": "node ./node_modules/grunt-cli/bin/grunt test",
-    "prepublish": "node ./node_modules/grunt-cli/bin/grunt coffee"
+    "prepublish": "node ./node_modules/grunt-cli/bin/grunt coffee test"
   },
   "peerDependencies": {
     "yo": ">=1.0.0"
