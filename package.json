@@ -28,7 +28,7 @@
     "url": "git://github.com/slara/generator-reveal.git"
   },
   "scripts": {
-    "test": "node ./node_modules/istanbul/lib/cli.js cover ./node_modules/mocha/bin/_mocha -- ./test/*.coffee --require coffee-script --reporter spec --timeout 100000",
+    "test": "node ./node_modules/grunt-cli/bin/grunt test && node ./node_modules/istanbul/lib/cli.js cover ./node_modules/mocha/bin/_mocha -- ./test/*.coffee --require coffee-script --reporter spec --timeout 100000",
     "coveralls": "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
     "prepublish": "node ./node_modules/grunt-cli/bin/grunt coffee test"
   },
