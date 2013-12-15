@@ -28,11 +28,11 @@
     "url": "git://github.com/slara/generator-reveal.git"
   },
   "scripts": {
-    "test": "grunt test",
-    "prepublish": "grunt coffee test"
+    "test": "node ./node_modules/grunt-cli/bin/grunt test",
+    "prepublish": "node ./node_modules/grunt-cli/bin/grunt coffee"
   },
   "peerDependencies": {
-    "yo": ">=1.0.0-rc.1.1"
+    "yo": ">=1.0.0"
   },
   "dependencies": {
     "yeoman-generator": "~0.14.2",
@@ -48,7 +48,8 @@
     "grunt-contrib-watch": "~0.5.3",
     "grunt-contrib-coffee": "~0.7.0",
     "coffee-script": "~1.6.3",
-    "chai": "~1.8.1"
+    "chai": "~1.8.1",
+    "grunt-cli": "~0.1.11"
   },
   "engines": {
     "node": ">=0.8.0",
