@@ -28,7 +28,7 @@
     "url": "git://github.com/slara/generator-reveal.git"
   },
   "scripts": {
-    "test": "node ./node_modules/grunt-cli/bin/grunt test",
+    "test": "node ./node_modules/istanbul/lib/cli.js cover ./node_modules/mocha/bin/_mocha -- ./test/*.coffee --require coffee-script --reporter spec --timeout 100000 && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
     "prepublish": "node ./node_modules/grunt-cli/bin/grunt coffee test"
   },
   "peerDependencies": {
@@ -49,7 +49,10 @@
     "grunt-contrib-coffee": "~0.7.0",
     "coffee-script": "~1.6.3",
     "chai": "~1.8.1",
-    "grunt-cli": "~0.1.11"
+    "grunt-cli": "~0.1.11",
+    "istanbul": "~0.1.46",
+    "mocha": "~1.15.1",
+    "coveralls": "~2.6.0"
   },
   "engines": {
     "node": ">=0.8.0",

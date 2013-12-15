@@ -1,4 +1,5 @@
 node_modules/
+coverage/
 temp/
 *.log
 app/index.js
