@@ -159,5 +159,16 @@ All three options maybe combined, e.g.
 yo reveal:slide "Markdown Slide With Notes And Section-Attributes" --notes --attributes --markdown
 ```
 
+## Customisation
+
+To change the options of the whole presentation, such as the theme used,
+transition effect etc. consult the
+[Reveal.js documentation](https://github.com/hakimel/reveal.js#readme).
+An important difference, though, is that you should not edit the `index.html`
+file directly as it gets overwritten as you add presentation content
+whenever a new grunt build is triggered.
+You should instead edit the `templates/_index.html` file, which is used as a
+template for the automatically generated `index.html`.
+
 ## License
 [MIT License](http://en.wikipedia.org/wiki/MIT_License)
