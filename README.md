@@ -1,5 +1,5 @@
 # Reveal.js generator [![Build Status](https://travis-ci.org/slara/generator-reveal.png?branch=master)](https://travis-ci.org/slara/generator-reveal) [![Coverage Status](https://coveralls.io/repos/slara/generator-reveal/badge.png)](https://coveralls.io/r/slara/generator-reveal) [![NPM version](https://badge.fury.io/js/generator-reveal.png)](http://badge.fury.io/js/generator-reveal)
- [![Dependency Status](https://david-dm.org/slara/generator-reveal.png)](https://david-dm.org/slara/generator-reveal) [![devDependency Status](https://david-dm.org/slara/generator-reveal/dev-status.png)](https://david-dm.org/slara/generator-reveal#info=devDependencies)
+ [![Dependency Status](https://david-dm.org/slara/generator-reveal.png)](https://david-dm.org/slara/generator-reveal) [![devDependency Status](https://david-dm.org/slara/generator-reveal/dev-status.png)](https://david-dm.org/slara/generator-reveal#info=devDependencies) [![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/)
 
 A [Yeoman](http://yeoman.io) generator for the awesome [Reveal.js](http://lab.hakim.se/reveal-js/) presentation framework.
 
