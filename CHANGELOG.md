@@ -1,5 +1,8 @@
 # Changelog
 
+## v0.3.4
+Same as last time but with compiled js :)
+
 ## v0.3.3
 Library updates.
 
