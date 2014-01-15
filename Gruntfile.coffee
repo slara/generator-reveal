@@ -13,7 +13,7 @@ module.exports = (grunt) ->
 
         coffeelint:
             options:
-                configFile: '.coffeelintrc'
+                configFile: 'coffeelint.json'
             all:
                 src: ['{,*/}*.coffee']
 
