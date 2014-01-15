@@ -21,7 +21,7 @@ module.exports = class RevealGenerator extends yeoman.generators.Base
     askFor: ->
         cb = @async()
         # Have Yeoman greet the user.
-        console.log @yeoman
+        @log @yeoman
         prompts = [
             {
                 name: 'presentationTitle'

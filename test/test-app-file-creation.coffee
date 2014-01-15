@@ -1,6 +1,10 @@
 path = require 'path'
-helpers = require('yeoman-generator').test
+yeoman = require 'yeoman-generator'
 expect = require('chai').expect
+
+assert = yeoman.assert
+helpers = yeoman.test
+
 testDirectory = path.join __dirname, 'temp'
 
 describe 'Generator Reveal', ->
@@ -27,9 +31,9 @@ describe 'Generator Reveal', ->
         ]
 
         helpers.mockPrompt app, {}
-        app.options['skip-install'] = true
+
         app.run {}, ->
-            helpers.assertFiles expected
+            assert.file expected
             done()
 
     it 'generates expected boilerplate files', (done) ->
@@ -47,7 +51,7 @@ describe 'Generator Reveal', ->
         helpers.mockPrompt app, {}
 
         app.run {}, ->
-            helpers.assertFiles expected
+            assert.file expected
             done()
 
     it 'generates package.json with correct version', (done) ->
@@ -56,7 +60,7 @@ describe 'Generator Reveal', ->
             packageVersion: '1.2.3'
 
         app.run {}, ->
-            helpers.assertFile 'package.json', /"version": "1.2.3"/
+            assert.fileContent 'package.json', /"version": "1.2.3"/
             done()
 
     it 'uses defaults for .yo-rc.json config', ->
@@ -73,10 +77,10 @@ describe 'Generator Reveal', ->
         app.run {}, ->
             # Wait for config to be written.
             setTimeout ->
-                helpers.assertFile '.yo-rc.json', /"generator-reveal"/
-                helpers.assertFile '.yo-rc.json', /"useSass": true/
-                helpers.assertFile '.yo-rc.json', /"presentationTitle": "ICanHazConfig"/
-                helpers.assertFile '.yo-rc.json', /"packageVersion": "0.1.0"/
+                assert.fileContent '.yo-rc.json', /"generator-reveal"/
+                assert.fileContent '.yo-rc.json', /"useSass": true/
+                assert.fileContent '.yo-rc.json', /"presentationTitle": "ICanHazConfig"/
+                assert.fileContent '.yo-rc.json', /"packageVersion": "0.1.0"/
                 done()
             , 10
 
@@ -87,12 +91,12 @@ describe 'Generator Reveal', ->
             useSass: true
 
         app.run {}, ->
-            helpers.assertFile 'css/source/theme.scss', /@import "..\/..\/bower_components\/reveal.js\/css\/theme\/template\/theme";/
-            helpers.assertFile 'Gruntfile.coffee', /sass:/
-            helpers.assertFile 'Gruntfile.coffee', /'css\/\*.css'/
-            helpers.assertFile 'Gruntfile.coffee', /'css\/theme.css': 'css\/source\/theme.scss'/
-            helpers.assertFile 'templates/_index.html', /<link rel="stylesheet" href="css\/theme.css" id="theme">/
-            helpers.assertFile 'package.json', /"grunt-contrib-sass"/
+            assert.fileContent 'css/source/theme.scss', /@import "..\/..\/bower_components\/reveal.js\/css\/theme\/template\/theme";/
+            assert.fileContent 'Gruntfile.coffee', /sass:/
+            assert.fileContent 'Gruntfile.coffee', /'css\/\*.css'/
+            assert.fileContent 'Gruntfile.coffee', /'css\/theme.css': 'css\/source\/theme.scss'/
+            assert.fileContent 'templates/_index.html', /<link rel="stylesheet" href="css\/theme.css" id="theme">/
+            assert.fileContent 'package.json', /"grunt-contrib-sass"/
             done()
 
     after (done) ->

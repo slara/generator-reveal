@@ -1,5 +1,9 @@
 path = require 'path'
-helpers = require('yeoman-generator').test
+yeoman = require 'yeoman-generator'
+
+assert = yeoman.assert
+helpers = yeoman.test
+
 testDirectory = path.join __dirname, 'temp'
 
 describe 'Sub-Generator Slide', ->
@@ -31,9 +35,9 @@ describe 'Sub-Generator Slide', ->
 
             app.run {}, ->
                 slide.run [], ->
-                    helpers.assertFile 'slides/default.html',
+                    assert.fileContent 'slides/default.html',
                         /<h2>default<\/h2>/
-                    helpers.assertFile 'slides/list.json',
+                    assert.fileContent 'slides/list.json',
                             /"default.html"/
                     done()
 
@@ -46,13 +50,13 @@ describe 'Sub-Generator Slide', ->
 
             app.run {}, ->
                 slide.run [], ->
-                    helpers.assertFile 'slides/html-attributes.html',
+                    assert.fileContent 'slides/html-attributes.html',
                         /<h2>html-attributes<\/h2>/
-                    helpers.assertFile 'slides/list.json',
+                    assert.fileContent 'slides/list.json',
                         /"filename": "html-attributes.html",/
-                    helpers.assertFile 'slides/list.json',
+                    assert.fileContent 'slides/list.json',
                         /"attr": {/
-                    helpers.assertFile 'slides/list.json',
+                    assert.fileContent 'slides/list.json',
                         /"data-background": "#ff0000"/
                     done()
 
@@ -65,9 +69,9 @@ describe 'Sub-Generator Slide', ->
 
             app.run {}, ->
                 slide.run [], ->
-                    helpers.assertFile 'slides/html-notes.html',
+                    assert.fileContent 'slides/html-notes.html',
                         /<aside class="notes">/
-                    helpers.assertFile 'slides/list.json',
+                    assert.fileContent 'slides/list.json',
                         /"html-notes.html"/
                     done()
 
@@ -81,9 +85,9 @@ describe 'Sub-Generator Slide', ->
 
                 app.run {}, ->
                     slide.run [], ->
-                        helpers.assertFile 'slides/markdown-notes.md',
+                        assert.fileContent 'slides/markdown-notes.md',
                             /note:/
-                        helpers.assertFile 'slides/list.json',
+                        assert.fileContent 'slides/list.json',
                             /"markdown-notes.md"/
                         done()
 
@@ -96,9 +100,9 @@ describe 'Sub-Generator Slide', ->
 
             app.run {}, ->
                 slide.run {}, ->
-                    helpers.assertFile 'slides/markdown.md',
+                    assert.fileContent 'slides/markdown.md',
                         /##  markdown/
-                    helpers.assertFile 'slides/list.json',
+                    assert.fileContent 'slides/list.json',
                         /"markdown.md"/
                     done()
 
@@ -112,13 +116,13 @@ describe 'Sub-Generator Slide', ->
 
                 app.run {}, ->
                     slide.run [], ->
-                        helpers.assertFile 'slides/markdown-attributes.md',
+                        assert.fileContent 'slides/markdown-attributes.md',
                             /##  markdown/
-                        helpers.assertFile 'slides/list.json',
+                        assert.fileContent 'slides/list.json',
                             /"filename": "markdown-attributes.md",/
-                        helpers.assertFile 'slides/list.json',
+                        assert.fileContent 'slides/list.json',
                             /"attr": {/
-                        helpers.assertFile 'slides/list.json',
+                        assert.fileContent 'slides/list.json',
                             /"data-background": "#ff0000"/
                         done()
 
