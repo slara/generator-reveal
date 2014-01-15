@@ -1,5 +1,8 @@
 # Changelog
 
+## v0.3.3
+Library updates.
+
 ## v0.3.2
 Same as `v0.3.1` but this time ran `prepublish` script. Compare https://github.com/isaacs/npm/issues/3856.
 
