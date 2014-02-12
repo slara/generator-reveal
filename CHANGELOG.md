@@ -2,8 +2,10 @@
 
 ## [v0.3.4](https://github.com/slara/generator-reveal/compare/v0.3.3...v0.3.4)
 ### Changes
- - Fix [#34](https://github.com/slara/generator-reveal/pull/34).
  - Library updates.
+
+### Fixes
+ - [Import path of search.js plugin](https://github.com/slara/generator-reveal/pull/34).
 
 
 ## [v0.3.3](https://github.com/slara/generator-reveal/compare/v0.3.1...v0.3.3)
