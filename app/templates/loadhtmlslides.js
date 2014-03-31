@@ -19,6 +19,14 @@
                         if (xhr.readyState === 4) {
                             if (xhr.status >= 200 && xhr.status < 300) {
                                 section.innerHTML = xhr.responseText;
+
+                                var scripts = section.querySelectorAll('script.live');
+                                if (typeof scripts === 'undefined') { return; }
+
+                                for (var i = 0; i < scripts.length; ++i) {
+                                    var script = scripts[i];
+                                    eval(script.innerHTML);
+                                }
                             } else {
                                 section.outerHTML = '<section data-state="alert">ERROR: The attempt to fetch ' + url + ' failed with the HTTP status ' + xhr.status + '. Check your browser\'s JavaScript console for more details.</p></section>';
                             }
