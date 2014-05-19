@@ -37,7 +37,9 @@
   },
   "dependencies": {
     "yeoman-generator": "~0.16.0",
-    "semver": "~2.2.0"
+    "semver": "~2.2.0",
+    "yosay": "^0.1.0",
+    "chalk": "~0.4.0"
   },
   "devDependencies": {
     "grunt": "~0.4.1",

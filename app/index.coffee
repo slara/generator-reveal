@@ -1,6 +1,8 @@
 path = require 'path'
 yeoman = require 'yeoman-generator'
 semver = require 'semver'
+yosay = require 'yosay'
+chalk = require 'chalk'
 
 module.exports = class RevealGenerator extends yeoman.generators.Base
 
@@ -21,7 +23,11 @@ module.exports = class RevealGenerator extends yeoman.generators.Base
     askFor: ->
         cb = @async()
         # Have Yeoman greet the user.
-        @log @yeoman
+        @log yosay()
+        @log chalk.magenta(
+            'This includes the amazing Reveal.js Framework\n' +
+            'and a Grunt file for your presentation pleasure.\n'
+        )
         prompts = [
             {
                 name: 'presentationTitle'
