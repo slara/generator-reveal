@@ -1,5 +1,13 @@
 # Changelog
 
+## [v0.3.5](https://github.com/slara/generator-reveal/compare/v0.3.4...v0.3.5)
+### Changes
+ - Add `grunt deploy` task
+
+### Fixes
+ - [Add pdf print fix from `reveal.js`](https://github.com/slara/generator-reveal/pull/40)
+ - [Mark xhr.status=0 as successful](https://github.com/slara/generator-reveal/pull/36)
+
 ## [v0.3.4](https://github.com/slara/generator-reveal/compare/v0.3.3...v0.3.4)
 ### Changes
  - Library updates.

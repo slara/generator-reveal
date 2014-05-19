@@ -64,6 +64,7 @@ describe 'Generator Reveal', ->
             done()
 
     it 'uses defaults for .yo-rc.json config', ->
+        (expect app.config.get 'deployToGithubPages').to.equal false
         (expect app.config.get 'useSass').to.equal false
         (expect app.config.get 'presentationTitle').to.equal 'Reveal.js and Yeoman is Awesomeness'
         (expect app.config.get 'packageVersion').to.equal '0.0.0'
@@ -73,6 +74,7 @@ describe 'Generator Reveal', ->
             presentationTitle: 'ICanHazConfig'
             packageVersion: '0.1.0'
             useSass: true
+            deployToGithubPages: false
 
         app.run {}, ->
             # Wait for config to be written.
@@ -89,6 +91,7 @@ describe 'Generator Reveal', ->
             presentationTitle: 'SASS Support 4 Custom Themes'
             packageVersion: '0.0.1'
             useSass: true
+            deployToGithubPages: false
 
         app.run {}, ->
             assert.fileContent 'css/source/theme.scss', /@import "..\/..\/bower_components\/reveal.js\/css\/theme\/template\/theme";/
@@ -97,6 +100,22 @@ describe 'Generator Reveal', ->
             assert.fileContent 'Gruntfile.coffee', /'css\/theme.css': 'css\/source\/theme.scss'/
             assert.fileContent 'templates/_index.html', /<link rel="stylesheet" href="css\/theme.css" id="theme">/
             assert.fileContent 'package.json', /"grunt-contrib-sass"/
+            done()
+
+    it 'generates Build control configuration for Github Pages Deployment', (done) ->
+        helpers.mockPrompt app,
+            pressentationTitle: 'Deploy to Github Pages'
+            packageVersion: '0.0.1'
+            useSass: false
+            deployToGithubPages: true
+            githubUsername: 'yeoman'
+            githubRepository: 'reveal-js'
+
+
+        app.run {}, ->
+            assert.fileContent 'Gruntfile.coffee', /git@github.com:yeoman\/reveal-js.git/
+            assert.fileContent 'Gruntfile.coffee', /grunt.registerTask 'deploy'/
+            assert.fileContent 'package.json', /"grunt-build-control"/
             done()
 
     after (done) ->

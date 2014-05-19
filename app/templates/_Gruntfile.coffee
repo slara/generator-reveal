@@ -88,6 +88,20 @@ module.exports = (grunt) ->
                     filter: 'isFile'
                 }]
 
+        <% if (config.get('deployToGithubPages')) { %>
+        buildcontrol:
+
+             options:
+                dir: 'dist'
+                commit: true
+                push: true
+                message: 'Built from %sourceCommit% on branch %sourceBranch%'
+            pages:
+                options:
+                    remote: 'git@github.com:<%= config.get('githubUsername') %>/<%= config.get('githubRepository')%>.git'
+                    branch: 'gh-pages'
+        <% } %>
+
 
     # Load all grunt tasks.
     require('load-grunt-tasks')(grunt)
@@ -129,6 +143,14 @@ module.exports = (grunt) ->
             'buildIndex'
             'copy'
         ]
+
+    <% if (config.get('deployToGithubPages')) { %>
+    grunt.registerTask 'deploy',
+        'Deploy to Github Pages', [
+            'dist'
+            'buildcontrol'
+        ]
+    <% } %>
 
     # Define default task.
     grunt.registerTask 'default', [

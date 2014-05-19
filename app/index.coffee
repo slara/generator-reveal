@@ -15,6 +15,9 @@ module.exports = class RevealGenerator extends yeoman.generators.Base
             presentationTitle: 'Reveal.js and Yeoman is Awesomeness'
             packageVersion: '0.0.0'
             useSass: false
+            deployToGithubPages: false
+            githubUsername: 'example_username'
+            githubRepository: 'example_repository'
 
         # When we are done:
         @on 'end', ->
@@ -48,12 +51,35 @@ module.exports = class RevealGenerator extends yeoman.generators.Base
                 type: 'confirm'
                 default: @config.get 'useSass'
             }
+            {
+                name: 'deployToGithubPages'
+                message: 'Do you want to deploy your presentation to Github Pages? This requires an empty Github repository.'
+                type: 'confirm'
+                default: @config.get 'deployToGithubPages'
+            }
+            {
+                name: 'githubUsername'
+                message: 'What is your Github username?'
+                default:  @config.get 'githubUsername'
+                when: (props) ->
+                    return props.deployToGithubPages
+            }
+            {
+                name: 'githubRepository'
+                message: 'What is the Github repository name?'
+                default: @config.get 'githubRepository'
+                when: (props) ->
+                    return props.deployToGithubPages
+            }
         ]
         @prompt prompts, (props) =>
             # Write answers to `config`.
             @config.set 'presentationTitle', props.presentationTitle
             @config.set 'packageVersion', props.packageVersion
             @config.set 'useSass', props.useSass
+            @config.set 'deployToGithubPages', props.deployToGithubPages
+            @config.set 'githubUsername', props.githubUsername
+            @config.set 'githubRepository', props.githubRepository
             cb()
 
     app: ->
