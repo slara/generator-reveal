@@ -36,26 +36,26 @@
     "yo": ">=1.0.0"
   },
   "dependencies": {
-    "yeoman-generator": "~0.16.0",
-    "semver": "~2.2.0",
-    "yosay": "^0.1.0",
+    "yeoman-generator": "~0.17.0",
+    "semver": "~2.3.0",
+    "yosay": "^0.2.1",
     "chalk": "~0.4.0"
   },
   "devDependencies": {
-    "grunt": "~0.4.1",
-    "load-grunt-tasks": "~0.3.0",
-    "grunt-coffeelint": "0.0.8",
-    "grunt-mocha-test": "~0.9.0",
-    "grunt-contrib-jshint": "~0.8.0",
+    "grunt": "~0.4.5",
+    "load-grunt-tasks": "~0.4.0",
+    "grunt-coffeelint": "0.0.10",
+    "grunt-mocha-test": "~0.10.2",
+    "grunt-contrib-jshint": "~0.10.0",
     "grunt-contrib-clean": "~0.5.0",
-    "grunt-contrib-watch": "~0.5.3",
-    "grunt-contrib-coffee": "~0.10.0",
+    "grunt-contrib-watch": "~0.6.1",
+    "grunt-contrib-coffee": "~0.10.1",
     "coffee-script": "~1.7.1",
-    "chai": "~1.9.0",
-    "grunt-cli": "~0.1.11",
-    "istanbul": "~0.2.3",
-    "mocha": "~1.17.0",
-    "coveralls": "~2.7.1"
+    "chai": "~1.9.1",
+    "grunt-cli": "~0.1.13",
+    "istanbul": "~0.2.10",
+    "mocha": "~1.19.0",
+    "coveralls": "~2.10.0"
   },
   "engines": {
     "node": ">=0.8.0",
