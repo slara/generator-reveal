@@ -168,7 +168,7 @@ With the help of [Grunt Build Control](https://github.com/robwierzbowski/grunt-b
 * Push your first commit
 * Deploy with `grunt deploy`
 
-If everithing goes right, `grunt deploy` will build and push your presentation to a gh-pages git branch. Give it a couple of minutes, fire up a browser and go to http://username.github.io/repositoryname to see your brand new presentation.
+If everything goes right, `grunt deploy` will build and push your presentation to a gh-pages git branch. Just give it a couple of minutes, fire up a browser and go to http://username.github.io/repositoryname to see your brand new presentation.
 
 
 
