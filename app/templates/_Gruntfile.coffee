@@ -91,7 +91,7 @@ module.exports = (grunt) ->
         <% if (config.get('deployToGithubPages')) { %>
         buildcontrol:
 
-             options:
+            options:
                 dir: 'dist'
                 commit: true
                 push: true
