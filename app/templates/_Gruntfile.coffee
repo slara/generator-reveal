@@ -10,8 +10,7 @@ module.exports = (grunt) ->
                     livereload: true
                 files: [
                     'index.html'
-                    'slides/*.md'
-                    'slides/*.html'
+                    'slides/{,*/}*.{md,html}'
                     'js/*.js'<% if (config.get('useSass')) { %>
                     'css/*.css'<% } %>
                 ]
