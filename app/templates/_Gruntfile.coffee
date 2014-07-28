@@ -129,13 +129,19 @@ module.exports = (grunt) ->
             'jshint'
         ]
 
-    grunt.registerTask 'server',
+    grunt.registerTask 'serve',
         'Run presentation locally and start watch process (living document).', [
             'buildIndex'<% if (config.get('useSass')) { %>
             'sass'<% } %>
             'connect:livereload'
             'watch'
         ]
+
+    grunt.registerTask 'server', ->
+        grunt.log.warn
+        'The `server` task has been deprecated.
+         Use `grunt serve` to start a server.'
+        grunt.task.run ['serve']
 
     grunt.registerTask 'dist',
         'Save presentation files to *dist* directory.', [
