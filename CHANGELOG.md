@@ -1,10 +1,15 @@
 # Changelog
-## [v0.3.8](https://github.com/slara/generator-reveal/compare/v0.3.7...v0.3.8)
+
+## [v0.3.9](https://github.com/slara/generator-reveal/compare/v0.3.8...v0.3.9)
 ### Changes
+ - Library updates.
+
+## [v0.3.8](https://github.com/slara/generator-reveal/compare/v0.3.7...v0.3.8)
+### Fixes
  - Fix font path in `Theme.scss`
 
 ## [v0.3.7](https://github.com/slara/generator-reveal/compare/v0.3.6...v0.3.7)
-### Changes
+### Fixes
  - Fix whitespace issue in `_Gruntfile` template. Thanks to @daformat.
 
 ## [v0.3.6](https://github.com/slara/generator-reveal/compare/v0.3.5...v0.3.6)

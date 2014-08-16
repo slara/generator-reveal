@@ -1,6 +1,6 @@
 {
   "name": "generator-reveal",
-  "version": "0.3.8",
+  "version": "0.3.9",
   "description": "A Reveal.js generator for Yeoman",
   "keywords": [
     "yeoman-generator",
