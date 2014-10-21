@@ -183,5 +183,16 @@ whenever a new grunt build is triggered.
 You should instead edit the `templates/_index.html` file, which is used as a
 template for the automatically generated `index.html`.
 
+### Highlight.js Syntax Themes
+
+The generated presentation app includes the [Highlight.js Syntax Themes for Reveal.js](https://github.com/nwinkler/reveal-highlight-themes) as a dependency, allowing you to change the syntax theme.
+
+The available syntax themes can be found in the `bower_components/reveal-highlight-themes` folder. Selecting a new syntax theme can be done by changing the stylesheet reference in the `templates/_index.html` file:
+
+```html
+<!-- For syntax highlighting -->
+<link rel="stylesheet" href="bower_components/reveal-highlight-themes/styles/monokai_sublime.css" id="highlight-theme">
+```
+
 ## License
 [MIT License](http://en.wikipedia.org/wiki/MIT_License)
