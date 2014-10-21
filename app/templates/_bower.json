@@ -2,6 +2,7 @@
   "name": "<%= _.slugify(config.get('presentationTitle')) %>",
   "version": "<%= config.get('packageVersion') %>",
   "dependencies": {
-    "reveal.js": "~2.6.1"
+    "reveal.js": "~2.6.1",
+    "reveal-highlight-themes": "~8.3.0"
   }
 }
