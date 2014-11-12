@@ -66,6 +66,7 @@ describe 'Generator Reveal', ->
     it 'uses defaults for .yo-rc.json config', ->
         (expect app.config.get 'deployToGithubPages').to.equal false
         (expect app.config.get 'useSass').to.equal false
+        (expect app.config.get 'revealTheme').to.equal 'default'
         (expect app.config.get 'presentationTitle').to.equal 'Reveal.js and Yeoman is Awesomeness'
         (expect app.config.get 'packageVersion').to.equal '0.0.0'
 
@@ -73,6 +74,7 @@ describe 'Generator Reveal', ->
         helpers.mockPrompt app,
             presentationTitle: 'ICanHazConfig'
             packageVersion: '0.1.0'
+            revealTheme: 'default'
             useSass: true
             deployToGithubPages: false
 
@@ -81,6 +83,7 @@ describe 'Generator Reveal', ->
             setTimeout ->
                 assert.fileContent '.yo-rc.json', /"generator-reveal"/
                 assert.fileContent '.yo-rc.json', /"useSass": true/
+                assert.fileContent '.yo-rc.json', /"revealTheme": "default"/
                 assert.fileContent '.yo-rc.json', /"presentationTitle": "ICanHazConfig"/
                 assert.fileContent '.yo-rc.json', /"packageVersion": "0.1.0"/
                 done()
@@ -90,6 +93,7 @@ describe 'Generator Reveal', ->
         helpers.mockPrompt app,
             presentationTitle: 'SASS Support 4 Custom Themes'
             packageVersion: '0.0.1'
+            revealTheme: 'default'
             useSass: true
             deployToGithubPages: false
 
