@@ -122,6 +122,18 @@ describe 'Generator Reveal', ->
             assert.fileContent 'package.json', /"grunt-build-control"/
             done()
 
+    it 'uses selected theme when not using sass', (done) ->
+        helpers.mockPrompt app,
+            pressentationTitle: 'Deploy to Github Pages'
+            packageVersion: '0.0.1'
+            useSass: false
+            revealTheme: 'night'
+            deployToGithubPages: false
+
+        app.run {}, ->
+            assert.fileContent 'templates/_index.html', /<link rel="stylesheet" href="bower_components\/reveal.js\/css\/theme\/night.css" id="theme">/
+            done()
+
     after (done) ->
         # Clean up `temp`.
         helpers.testDirectory testDirectory, (err) ->

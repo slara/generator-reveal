@@ -3,7 +3,6 @@ yeoman = require 'yeoman-generator'
 semver = require 'semver'
 yosay = require 'yosay'
 chalk = require 'chalk'
-themes = require './revealThemes.js'
 
 
 module.exports = class RevealGenerator extends yeoman.generators.Base
@@ -12,6 +11,7 @@ module.exports = class RevealGenerator extends yeoman.generators.Base
         yeoman.generators.Base.apply @, arguments
 
         @pkg = JSON.parse @readFileAsString path.join __dirname, '../package.json'
+        @config.set 'themes', JSON.parse @readFileAsString path.join __dirname, './theme_choices.json'
         # Setup config defaults.
         @config.defaults
             presentationTitle: 'Reveal.js and Yeoman is Awesomeness'
@@ -60,7 +60,7 @@ module.exports = class RevealGenerator extends yeoman.generators.Base
                 message: 'What Reveal.js theme would you like to use?'
                 when: (props) ->
                       return !props.useSass
-                choices: themes.all()
+                choices: @config.get 'themes'
                 default: @config.get 'revealTheme'
             }
             {
