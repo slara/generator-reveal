@@ -56,7 +56,7 @@ module.exports = class RevealGenerator extends yeoman.generators.Base
             }
             {
                 name: 'revealTheme'
-                type: 'list'
+                type: 'rawlist'
                 message: 'What Reveal.js theme would you like to use?'
                 when: (props) ->
                       return !props.useSass
