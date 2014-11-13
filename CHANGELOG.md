@@ -1,5 +1,11 @@
 # Changelog
 
+## [v0.3.10](https://github.com/slara/generator-reveal/compare/v0.3.9...v0.3.10)
+### Changes
+ - Add Highlight.js support using reveal-highlight-themes. Thanks to @nwinkler.
+ - Add Reveal theme selection on generator prompt. Thanks to @tristola.
+ - Library updates.
+
 ## [v0.3.9](https://github.com/slara/generator-reveal/compare/v0.3.8...v0.3.9)
 ### Changes
  - Library updates.
