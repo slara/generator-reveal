@@ -15,7 +15,7 @@
     <% if (config.get('useSass')) { %>
         <link rel="stylesheet" href="css/theme.css" id="theme">
     <% } else { %>
-        <link rel="stylesheet" href="bower_components/reveal.js/css/theme/default.css" id="theme">
+        <link rel="stylesheet" href="bower_components/reveal.js/css/theme/<%=config.get('revealTheme')%>.css" id="theme">
     <% } %>
 
         <!-- For syntax highlighting -->

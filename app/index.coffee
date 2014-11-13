@@ -4,16 +4,19 @@ semver = require 'semver'
 yosay = require 'yosay'
 chalk = require 'chalk'
 
+
 module.exports = class RevealGenerator extends yeoman.generators.Base
 
     constructor: (args, options) ->
         yeoman.generators.Base.apply @, arguments
-        @pkg = JSON.parse @readFileAsString path.join __dirname, '../package.json'
 
+        @pkg = JSON.parse @readFileAsString path.join __dirname, '../package.json'
+        @config.set 'themes', JSON.parse @readFileAsString path.join __dirname, './theme_choices.json'
         # Setup config defaults.
         @config.defaults
             presentationTitle: 'Reveal.js and Yeoman is Awesomeness'
             packageVersion: '0.0.0'
+            revealTheme: 'default'
             useSass: false
             deployToGithubPages: false
             githubUsername: 'example_username'
@@ -52,6 +55,15 @@ module.exports = class RevealGenerator extends yeoman.generators.Base
                 default: @config.get 'useSass'
             }
             {
+                name: 'revealTheme'
+                type: 'list'
+                message: 'What Reveal.js theme would you like to use?'
+                when: (props) ->
+                      return !props.useSass
+                choices: @config.get 'themes'
+                default: @config.get 'revealTheme'
+            }
+            {
                 name: 'deployToGithubPages'
                 message: 'Do you want to deploy your presentation to Github Pages? This requires an empty Github repository.'
                 type: 'confirm'
@@ -77,6 +89,7 @@ module.exports = class RevealGenerator extends yeoman.generators.Base
             @config.set 'presentationTitle', props.presentationTitle
             @config.set 'packageVersion', props.packageVersion
             @config.set 'useSass', props.useSass
+            @config.set 'revealTheme', props.revealTheme
             @config.set 'deployToGithubPages', props.deployToGithubPages
             @config.set 'githubUsername', props.githubUsername
             @config.set 'githubRepository', props.githubRepository
