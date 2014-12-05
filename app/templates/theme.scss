@@ -15,11 +15,11 @@
 // Include theme-specific fonts ----------------
 @font-face {
         font-family: 'League Gothic';
-        src: url('../../bower_components/reveal.js/lib/font/league_gothic-webfont.eot');
-        src: url('../../bower_components/reveal.js/lib/font/league_gothic-webfont.eot?#iefix') format('embedded-opentype'),
-                 url('../../bower_components/reveal.js/lib/font/league_gothic-webfont.woff') format('woff'),
-                 url('../../bower_components/reveal.js/lib/font/league_gothic-webfont.ttf') format('truetype'),
-                 url('../../bower_components/reveal.js/lib/font/league_gothic-webfont.svg#LeagueGothicRegular') format('svg');
+        src: url('../bower_components/reveal.js/lib/font/league_gothic-webfont.eot');
+        src: url('../bower_components/reveal.js/lib/font/league_gothic-webfont.eot?#iefix') format('embedded-opentype'),
+                 url('../bower_components/reveal.js/lib/font/league_gothic-webfont.woff') format('woff'),
+                 url('../bower_components/reveal.js/lib/font/league_gothic-webfont.ttf') format('truetype'),
+                 url('../bower_components/reveal.js/lib/font/league_gothic-webfont.svg#LeagueGothicRegular') format('svg');
 
         font-weight: normal;
         font-style: normal;
