@@ -11,7 +11,7 @@ module.exports = class RevealGenerator extends yeoman.generators.Base
         yeoman.generators.Base.apply @, arguments
 
         @pkg = JSON.parse @readFileAsString path.join __dirname, '../package.json'
-        @config.set 'themes', JSON.parse @readFileAsString path.join __dirname, './theme_choices.json'
+
         # Setup config defaults.
         @config.defaults
             presentationTitle: 'Reveal.js and Yeoman is Awesomeness'
@@ -60,7 +60,7 @@ module.exports = class RevealGenerator extends yeoman.generators.Base
                 message: 'What Reveal.js theme would you like to use?'
                 when: (props) ->
                       return !props.useSass
-                choices: @config.get 'themes'
+                choices: JSON.parse @readFileAsString path.join __dirname, './theme_choices.json'
                 default: @config.get 'revealTheme'
             }
             {
@@ -114,5 +114,3 @@ module.exports = class RevealGenerator extends yeoman.generators.Base
     runtime: ->
         @copy 'bowerrc', '.bowerrc'
         @copy 'gitignore', '.gitignore'
-
-
