@@ -1,3 +1,5 @@
+'use strict'
+
 module.exports = (grunt) ->
     # Load all grunt tasks.
     require('load-grunt-tasks')(grunt)

@@ -1,3 +1,5 @@
+'use strict'
+
 assert = require 'assert'
 
 describe 'Generator Reveal', ->
