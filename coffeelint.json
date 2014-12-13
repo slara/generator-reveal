@@ -5,8 +5,25 @@
     "max_line_length": {
         "level": "ignore"
     },
+    "prefer_english_operator": {
+        "level": "error"
+    },
     "line_endings": {
         "level": "error"
+    },
+    "no_trailing_whitespace": {
+        "name": "no_trailing_whitespace",
+        "level": "error",
+        "allowed_in_comments": false,
+        "allowed_in_empty_lines": false
+    },
+    "colon_assignment_spacing": {
+        "name": "colon_assignment_spacing",
+        "level": "error",
+        "spacing": {
+            "left": 0,
+            "right": 1
+        }
     },
     "arrow_spacing": {
         "level": "error"
@@ -24,6 +41,16 @@
         "level": "error"
     },
     "no_unnecessary_fat_arrows": {
+        "level": "error"
+    },
+    "no_unnecessary_double_quotes": {
+        "level": "error"
+    },
+    "no_debugger": {
+        "name": "no_debugger",
+        "level": "error"
+    },
+    "no_interpolation_in_single_quotes": {
         "level": "error"
     }
 }

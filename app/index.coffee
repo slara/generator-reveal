@@ -71,7 +71,7 @@ module.exports = class RevealGenerator extends yeoman.generators.Base
             {
                 name: 'githubUsername'
                 message: 'What is your Github username?'
-                default:  @config.get 'githubUsername'
+                default: @config.get 'githubUsername'
                 when: (props) -> props.deployToGithubPages is on
             }
             {
