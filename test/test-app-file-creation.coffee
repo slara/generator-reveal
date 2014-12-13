@@ -1,6 +1,5 @@
 path = require 'path'
 yeoman = require 'yeoman-generator'
-expect = require('chai').expect
 
 assert = yeoman.assert
 helpers = yeoman.test
