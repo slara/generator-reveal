@@ -1,5 +1,13 @@
 # Changelog
 
+## [master](https://github.com/slara/generator-reveal/compare/v0.3.10...master)
+### Fixes
+ - Fix path to fonts for dist and deploy tasks. Thanks to @mischah.
+
+### Changes
+ - Library updates.
+ - Update `npm` and `node` engine requirements.
+
 ## [v0.3.10](https://github.com/slara/generator-reveal/compare/v0.3.9...v0.3.10)
 ### Changes
  - Add Highlight.js support using reveal-highlight-themes. Thanks to @nwinkler.
