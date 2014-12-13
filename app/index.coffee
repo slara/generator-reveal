@@ -58,9 +58,8 @@ module.exports = class RevealGenerator extends yeoman.generators.Base
                 name: 'revealTheme'
                 type: 'list'
                 message: 'What Reveal.js theme would you like to use?'
-                when: (props) ->
-                      return !props.useSass
-                choices: JSON.parse @readFileAsString path.join __dirname, './theme_choices.json'
+                when: (props) -> props.useSass is off
+                choices: @fs.readJSON path.join __dirname, './theme_choices.json'
                 default: @config.get 'revealTheme'
             }
             {
@@ -73,15 +72,13 @@ module.exports = class RevealGenerator extends yeoman.generators.Base
                 name: 'githubUsername'
                 message: 'What is your Github username?'
                 default:  @config.get 'githubUsername'
-                when: (props) ->
-                    return props.deployToGithubPages
+                when: (props) -> props.deployToGithubPages is on
             }
             {
                 name: 'githubRepository'
                 message: 'What is the Github repository name?'
                 default: @config.get 'githubRepository'
-                when: (props) ->
-                    return props.deployToGithubPages
+                when: (props) -> props.deployToGithubPages is on
             }
         ]
         @prompt prompts, (props) =>
