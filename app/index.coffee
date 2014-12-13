@@ -19,8 +19,6 @@ module.exports = class RevealGenerator extends yeoman.generators.Base
             revealTheme: 'default'
             useSass: false
             deployToGithubPages: false
-            githubUsername: 'example_username'
-            githubRepository: 'example_repository'
 
         # When we are done:
         @on 'end', ->

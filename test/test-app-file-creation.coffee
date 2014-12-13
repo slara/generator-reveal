@@ -120,7 +120,11 @@ describe 'Generator Reveal', ->
             assert.fileContent 'Gruntfile.coffee', /git@github.com:yeoman\/reveal-js.git/
             assert.fileContent 'Gruntfile.coffee', /grunt.registerTask 'deploy'/
             assert.fileContent 'package.json', /"grunt-build-control"/
-            done()
+            setTimeout ->
+                assert.fileContent '.yo-rc.json', /"githubUsername": "yeoman"/
+                assert.fileContent '.yo-rc.json', /"githubRepository": "reveal-js"/
+                done()
+            , 10
 
     it 'uses selected theme when not using sass', (done) ->
         helpers.mockPrompt app,
