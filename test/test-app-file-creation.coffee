@@ -74,16 +74,16 @@ describe 'Generator Reveal', ->
         helpers.mockPrompt app,
             presentationTitle: 'ICanHazConfig'
             packageVersion: '0.1.0'
-            revealTheme: 'default'
-            useSass: true
+            revealTheme: 'simple'
+            useSass: false
             deployToGithubPages: false
 
         app.run {}, ->
             # Wait for config to be written.
             setTimeout ->
                 assert.fileContent '.yo-rc.json', /"generator-reveal"/
-                assert.fileContent '.yo-rc.json', /"useSass": true/
-                assert.fileContent '.yo-rc.json', /"revealTheme": "default"/
+                assert.fileContent '.yo-rc.json', /"useSass": false/
+                assert.fileContent '.yo-rc.json', /"revealTheme": "simple"/
                 assert.fileContent '.yo-rc.json', /"presentationTitle": "ICanHazConfig"/
                 assert.fileContent '.yo-rc.json', /"packageVersion": "0.1.0"/
                 done()
