@@ -3,7 +3,6 @@
 fs = require 'fs'
 path = require 'path'
 yeoman = require 'yeoman-generator'
-semver = require 'semver'
 
 module.exports = class SlideGenerator extends yeoman.generators.NamedBase
     constructor: ->
@@ -22,9 +21,8 @@ module.exports = class SlideGenerator extends yeoman.generators.NamedBase
             default: false
 
     files: ->
-        appPath = process.cwd()
-        fullPath = path.join appPath, '/slides/list.json'
-        list = require fullPath
+        fullPath = @destinationPath('slides/list.json')
+        list = @fs.readJSON fullPath
 
         if @options.markdown
             @filename = "#{@_.slugify(@name)}.md"
@@ -51,4 +49,7 @@ module.exports = class SlideGenerator extends yeoman.generators.NamedBase
             @log.info "Appending slides/#{@filename} to slides/list.json."
             list.push @filename
 
+        # TODO
+        # replace with @fs.writeJSON as soon as @fs supports it
+        # then we can remove the `fs` dependency.
         fs.writeFileSync fullPath, JSON.stringify list, null, 4
