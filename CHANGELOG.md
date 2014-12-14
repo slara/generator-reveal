@@ -1,6 +1,6 @@
 # Changelog
 
-## [master](https://github.com/slara/generator-reveal/compare/v0.3.10...master)
+## [v0.4.0](https://github.com/slara/generator-reveal/compare/v0.3.10...v0.4.0)
 ### Fixes
  - Fix path to fonts for dist and deploy tasks. Thanks to @mischah.
 
