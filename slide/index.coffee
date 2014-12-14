@@ -5,8 +5,7 @@ path = require 'path'
 yeoman = require 'yeoman-generator'
 
 module.exports = class SlideGenerator extends yeoman.generators.NamedBase
-    constructor: ->
-        yeoman.generators.NamedBase.apply @, arguments
+    configuring: ->
         @option 'notes',
             desc: 'Include speaker notes'
             type: Boolean
@@ -20,7 +19,7 @@ module.exports = class SlideGenerator extends yeoman.generators.NamedBase
             type: Boolean
             default: false
 
-    files: ->
+    writing: ->
         fullPath = @destinationPath('slides/list.json')
         list = @fs.readJSON fullPath
 
