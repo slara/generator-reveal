@@ -11,9 +11,7 @@ describe 'Generator Reveal', ->
     run_context = {}
 
     beforeEach ->
-        run_context = helpers
-            .run(path.join __dirname, '../app')
-            .withOptions('skip-install': true)
+        run_context = helpers.run(path.join __dirname, '../app')
 
     context 'with defaults', ->
         beforeEach (done) ->
