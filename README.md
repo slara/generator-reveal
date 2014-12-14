@@ -17,7 +17,7 @@ Run `yo reveal` and start building your presentation.
 After all files are created you can view your slides with `grunt`:
 
 ```bash
-grunt server
+grunt serve
 ```
 
 Then, create further slides with `yo reveal:slide more-content`. See below for available [options](#options). When you want to export your presentation to some static HTML server, you can type `grunt dist` to have all your relevant files saved to the `dist` directory.

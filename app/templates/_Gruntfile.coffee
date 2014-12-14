@@ -137,12 +137,6 @@ module.exports = (grunt) ->
             'watch'
         ]
 
-    grunt.registerTask 'server', ->
-        grunt.log.warn
-        'The `server` task has been deprecated.
-         Use `grunt serve` to start a server.'
-        grunt.task.run ['serve']
-
     grunt.registerTask 'dist',
         'Save presentation files to *dist* directory.', [
             'test'<% if (config.get('useSass')) { %>
@@ -162,5 +156,5 @@ module.exports = (grunt) ->
     # Define default task.
     grunt.registerTask 'default', [
         'test'
-        'server'
+        'serve'
     ]
