@@ -1,5 +1,7 @@
 'use strict'
 
+{spawn} = require 'child_process'
+
 module.exports = (grunt) ->
     # Load all grunt tasks.
     require('load-grunt-tasks')(grunt)
@@ -8,16 +10,7 @@ module.exports = (grunt) ->
         watch:
             coffee:
                 files: ['{,*/}*.coffee']
-                tasks: ['coffeelint', 'coffee', 'mochaTest']
-            jshint:
-                files: ['app/{,*/}*.js']
-                tasks: ['jshint', 'mochaTest']
-
-        coffeelint:
-            options:
-                configFile: 'coffeelint.json'
-            all:
-                src: ['{,*/}*.coffee']
+                tasks: ['coffee', 'test']
 
         coffee:
             compile:
@@ -25,34 +18,14 @@ module.exports = (grunt) ->
                 src: ['app/index.coffee', 'slide/index.coffee']
                 ext: '.js'
 
-        jshint:
-            options:
-                jshintrc: 'app/templates/jshintrc'
-            all:
-                src: ['app/templates/*.js']
-
-        mochaTest:
-            options:
-                require: 'coffee-script'
-                reporter: 'spec'
-            all:
-                src: ['test/*.coffee']
-
-        clean:
-            test:
-                src: ['test/temp']
-
-    # Test task run by CI.
-    grunt.registerTask 'test', [
-        'coffee'
-        'coffeelint'
-        'jshint'
-        'clean'
-        'mochaTest'
-    ]
+    grunt.registerTask 'test', 'Run `npm test`', ->
+        done = @async()
+        test = spawn 'npm', ['test'], stdio: 'inherit'
+        test.on 'close', done
 
     # Default task to get development going.
     grunt.registerTask 'default', [
+        'coffee'
         'test'
         'watch'
     ]
