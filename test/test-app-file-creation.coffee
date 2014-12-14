@@ -1,10 +1,32 @@
 'use strict'
 
 path = require 'path'
+fs = require 'fs'
 yeoman = require 'yeoman-generator'
+_assert = require 'assert'
+
+coffeelint = require 'coffeelint'
+jshintcli = require 'jshint/src/cli'
 
 assert = yeoman.assert
 helpers = yeoman.test
+
+lint_generated_files = (cb) ->
+    coffee_results = coffeelint.lint(
+        fs.readFileSync('Gruntfile.coffee', encoding: 'utf-8'),
+        {
+            indentation:
+                value: 4
+            max_line_length:
+                level: 'ignore'
+        }
+    )
+    _assert.strictEqual coffee_results.length, 0, 'Generated Gruntfile.coffee is ill formatted'
+
+    jshintcli.loadConfig path.join __dirname, '../app/templates/jshintrc'
+    jshintcli.run args: ['js/loadhtmlslides.js'], reporter: (results, data) ->
+        _assert.strictEqual results.length, 0, 'Generated js/loadhtmlslides.js is ill formatted'
+        cb()
 
 describe 'Generator Reveal', ->
     # SUT object.
@@ -12,6 +34,8 @@ describe 'Generator Reveal', ->
 
     beforeEach ->
         run_context = helpers.run(path.join __dirname, '../app')
+    afterEach (done) ->
+        lint_generated_files(done)
 
     context 'with defaults', ->
         beforeEach (done) ->
