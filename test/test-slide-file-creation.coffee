@@ -1,111 +1,114 @@
 'use strict'
 
 path = require 'path'
+fs = require 'fs'
 yeoman = require 'yeoman-generator'
 
 assert = yeoman.assert
 helpers = yeoman.test
 
+init_list_dot_json_file = (generator) ->
+    fs.mkdirSync generator.destinationPath('slides')
+    fs.writeFileSync generator.destinationPath('slides/list.json'), '["index.md"]'
+
 describe 'Sub-Generator Slide', ->
-    beforeEach (done) ->
-        helpers
-            .run(path.join __dirname, '../app')
-            .withOptions('skip-install': true)
-            .withPrompts(
-                presentationTitle: 'Sub-Generator Slide Test'
-                packageVersion: '0.0.0-test'
-            )
-            .on 'end', done
-
     describe 'default (no options passed)', ->
-        it 'creates html slide', (done) ->
-            slide = helpers.createGenerator 'reveal:slide', [
-                path.join __dirname, '../slide'
-            ], ['default']
+        before (done) ->
+            helpers
+                .run(path.join __dirname, '../slide')
+                .withArguments(['Some Default Name'])
+                .on('ready', init_list_dot_json_file)
+                .on 'end', done
 
-            slide.run [], ->
-                assert.fileContent 'slides/default.html',
-                    /<h2>default<\/h2>/
-                assert.fileContent 'slides/list.json',
-                    /"default.html"/
-                done()
+        it 'creates html slide', ->
+            assert.fileContent 'slides/some-default-name.html',
+                /<h2>Some Default Name<\/h2>/
+            assert.fileContent 'slides/list.json',
+                /"some-default-name.html"/
 
-    describe '--attributes option', ->
-        it 'creates html slide with attributes hash in list.json', (done) ->
-            slide = helpers.createGenerator 'reveal:slide', [
-                path.join __dirname, '../slide'
-            ], ['html-attributes']
-            slide.options.attributes = true
+    describe 'with --attributes option', ->
+        before (done) ->
+            helpers
+                .run(path.join __dirname, '../slide')
+                .withArguments(['HTML Attributes', '--attributes'])
+                .on('ready', init_list_dot_json_file)
+                .on 'end', done
 
-            slide.run [], ->
-                assert.fileContent 'slides/html-attributes.html',
-                    /<h2>html-attributes<\/h2>/
-                assert.fileContent 'slides/list.json',
-                    /"filename": "html-attributes.html",/
-                assert.fileContent 'slides/list.json',
-                    /"attr": {/
-                assert.fileContent 'slides/list.json',
-                    /"data-background": "#ff0000"/
-                done()
+        it 'creates html slide with attributes hash in list.json', ->
+            assert.fileContent 'slides/html-attributes.html',
+                /<h2>HTML Attributes<\/h2>/
+            assert.fileContent 'slides/list.json',
+                /"filename": "html-attributes.html",/
+            assert.fileContent 'slides/list.json',
+                /"attr": {/
+            assert.fileContent 'slides/list.json',
+                /"data-background": "#ff0000"/
 
-    describe '--notes option', ->
-        it 'creates html slide with notes', (done) ->
-            slide = helpers.createGenerator 'reveal:slide', [
-                path.join __dirname, '../slide'
-            ], ['html-notes']
-            slide.options.notes = true
+    describe 'with --notes option', ->
+        before (done) ->
+            helpers
+                .run(path.join __dirname, '../slide')
+                .withArguments(['HTML With Notes', '--notes'])
+                .on('ready', init_list_dot_json_file)
+                .on 'end', done
 
-            slide.run [], ->
-                assert.fileContent 'slides/html-notes.html',
-                    /<aside class="notes">/
-                assert.fileContent 'slides/list.json',
-                    /"html-notes.html"/
-                done()
+        it 'creates html slide with notes', ->
+            assert.fileContent 'slides/html-with-notes.html',
+                /<aside class="notes">/
+            assert.fileContent 'slides/list.json',
+                /"html-with-notes.html"/
 
-        describe 'together with --markdown', ->
-            it 'creates markdown slide with notes', (done) ->
-                slide = helpers.createGenerator 'reveal:slide', [
-                    path.join __dirname, '../slide'
-                ], ['markdown-notes']
-                slide.options.notes = true
-                slide.options.markdown = true
 
-                slide.run [], ->
-                    assert.fileContent 'slides/markdown-notes.md',
-                        /note:/
-                    assert.fileContent 'slides/list.json',
-                        /"markdown-notes.md"/
-                    done()
+    describe 'with --markdown and --notes options', ->
+        before (done) ->
+            helpers
+                .run(path.join __dirname, '../slide')
+                .withArguments([
+                    'Markdown With Notes',
+                    '--notes',
+                    '--markdown'
+                ])
+                .on('ready', init_list_dot_json_file)
+                .on 'end', done
 
-    describe '--markdown option', ->
-        it 'creates markdown slide', (done) ->
-            slide = helpers.createGenerator 'reveal:slide', [
-                path.join __dirname, '../slide'
-            ], ['markdown']
-            slide.options.markdown = true
+        it 'creates markdown slide with notes', ->
+            assert.fileContent 'slides/markdown-with-notes.md',
+                /note:/
+            assert.fileContent 'slides/list.json',
+                /"markdown-with-notes.md"/
 
-            slide.run {}, ->
-                assert.fileContent 'slides/markdown.md',
-                    /##  markdown/
-                assert.fileContent 'slides/list.json',
-                    /"markdown.md"/
-                done()
+    describe 'with --markdown option', ->
+        before (done) ->
+            helpers
+                .run(path.join __dirname, '../slide')
+                .withArguments(['Markdown Format', '--markdown'])
+                .on('ready', init_list_dot_json_file)
+                .on 'end', done
 
-        describe 'together with --attributes', ->
-            it 'creates markdown slide with attributes hash in list.json', (done) ->
-                slide = helpers.createGenerator 'reveal:slide', [
-                    path.join __dirname, '../slide'
-                ], ['markdown-attributes']
-                slide.options.attributes = true
-                slide.options.markdown = true
+        it 'creates markdown slide', ->
+            assert.fileContent 'slides/markdown-format.md',
+                /##  Markdown Format/
+            assert.fileContent 'slides/list.json',
+                /"markdown-format.md"/
 
-                slide.run [], ->
-                    assert.fileContent 'slides/markdown-attributes.md',
-                        /##  markdown/
-                    assert.fileContent 'slides/list.json',
-                        /"filename": "markdown-attributes.md",/
-                    assert.fileContent 'slides/list.json',
-                        /"attr": {/
-                    assert.fileContent 'slides/list.json',
-                        /"data-background": "#ff0000"/
-                    done()
+    describe 'with --markdown and --attributes options', ->
+        before (done) ->
+            helpers
+                .run(path.join __dirname, '../slide')
+                .withArguments([
+                    'Markdown With Attributes',
+                    '--markdown',
+                    '--attributes'
+                ])
+                .on('ready', init_list_dot_json_file)
+                .on 'end', done
+
+        it 'creates markdown slide with attributes hash in list.json', ->
+            assert.fileContent 'slides/markdown-with-attributes.md',
+                /##  Markdown With Attributes/
+            assert.fileContent 'slides/list.json',
+                /"filename": "markdown-with-attributes.md",/
+            assert.fileContent 'slides/list.json',
+                /"attr": {/
+            assert.fileContent 'slides/list.json',
+                /"data-background": "#ff0000"/
