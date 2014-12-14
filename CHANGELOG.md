@@ -5,8 +5,9 @@
  - Fix path to fonts for dist and deploy tasks. Thanks to @mischah.
 
 ### Changes
- - Library updates.
- - Update `npm` and `node` engine requirements.
+ - Remove `grunt server` task. Use `grunt serve` instead.
+ - Library updates. **Possibly breaking change.**
+ - Update `npm` and `node` engine requirements. **Possibly breaking change.**
 
 ## [v0.3.10](https://github.com/slara/generator-reveal/compare/v0.3.9...v0.3.10)
 ### Changes
