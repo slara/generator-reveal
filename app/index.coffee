@@ -26,7 +26,7 @@ module.exports = class RevealGenerator extends yeoman.generators.Base
             @log yosay()
             @log chalk.magenta(
                 'This includes the amazing Reveal.js Framework\n' +
-                'and a Grunt file for your presentation pleasure.\n'
+                'and a Gruntfile for your presentation pleasure.\n'
             )
             prompts = [
                 {
