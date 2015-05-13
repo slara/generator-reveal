@@ -13,6 +13,7 @@ module.exports = (grunt) ->
                     'slides/{,*/}*.{md,html}'
                     'js/*.js'<% if (config.get('useSass')) { %>
                     'css/*.css'<% } %>
+                    'resources/**'
                 ]
 
             index:
@@ -80,6 +81,7 @@ module.exports = (grunt) ->
                         'bower_components/**'
                         'js/**'<% if (config.get('useSass')) { %>
                         'css/*.css'<% } %>
+                        'resources/**'
                     ]
                     dest: 'dist/'
                 },{

@@ -159,6 +159,17 @@ All three options maybe combined, e.g.
 yo reveal:slide "Markdown Slide With Notes And Section-Attributes" --notes --attributes --markdown
 ```
 
+
+
+## Resources
+
+If your presentation requires specific resources that you would like included
+with your project, place them in the resources directory.  These assets will be
+included in the distribution and available for access at the path
+`resources/asset_name.ext`.
+
+
+
 ## Github Pages Deployment
 
 With the help of [Grunt Build Control](https://github.com/robwierzbowski/grunt-build-control), `generator-reveal` can deploy your presentation to Github Pages easily. All you have to do is
