@@ -62,6 +62,7 @@ describe 'Generator Reveal', ->
                 'bower.json'
                 'js/loadhtmlslides.js'
                 'package.json'
+                'resources/.gitkeep'
             ]
 
             assert.file expected

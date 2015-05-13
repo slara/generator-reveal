@@ -100,6 +100,8 @@ module.exports = class RevealGenerator extends yeoman.generators.Base
             @copy @templatePath('__index.html'), @destinationPath('templates/_index.html')
             @copy @templatePath('__section.html'), @destinationPath('templates/_section.html')
 
+            @fs.write @destinationPath('resources/.gitkeep'), 'Used to store static assets'
+
         projectfiles: ->
             @fs.copy @templatePath('editorconfig'), @destinationPath('.editorconfig')
             @fs.copy @templatePath('jshintrc'), @destinationPath('.jshintrc')
