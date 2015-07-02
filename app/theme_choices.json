@@ -1,11 +1,13 @@
 [
  {"name": "beige",     "value": "beige" },
+ {"name": "black",     "value": "black" },
  {"name": "blood",     "value": "blood" },
- {"name": "default",   "value": "default"},
+ {"name": "league",    "value": "league" },
  {"name": "moon",      "value": "moon"},
  {"name": "night",     "value": "night"},
  {"name": "serif",     "value": "serif"},
  {"name": "simple",    "value": "simple"},
  {"name": "sky",       "value": "sky" },
- {"name": "solarized", "value": "solarized" }
+ {"name": "solarized", "value": "solarized" },
+ {"white": "white",    "value": "white" }
 ]

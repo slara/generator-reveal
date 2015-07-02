@@ -70,7 +70,7 @@ describe 'Generator Reveal', ->
         it 'uses defaults for .yo-rc.json config', ->
             assert.fileContent '.yo-rc.json', '"deployToGithubPages": false'
             assert.fileContent '.yo-rc.json', '"useSass": false'
-            assert.fileContent '.yo-rc.json', '"revealTheme": "default"'
+            assert.fileContent '.yo-rc.json', '"revealTheme": "black"'
             assert.fileContent '.yo-rc.json', '"presentationTitle": "Reveal.js and Yeoman is Awesomeness"'
             assert.fileContent '.yo-rc.json', 'packageVersion": "0.0.0"'
 

@@ -15,7 +15,7 @@ module.exports = class RevealGenerator extends yeoman.generators.Base
         @config.defaults
             presentationTitle: 'Reveal.js and Yeoman is Awesomeness'
             packageVersion: '0.0.0'
-            revealTheme: 'default'
+            revealTheme: 'black'
             useSass: false
             deployToGithubPages: false
 
