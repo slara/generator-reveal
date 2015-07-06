@@ -1,6 +1,6 @@
 {
   "name": "generator-reveal",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "A Reveal.js generator for Yeoman",
   "keywords": [
     "yeoman-generator",
@@ -38,9 +38,9 @@
   },
   "dependencies": {
     "yeoman-generator": "^0.18.0",
-    "semver": "^4.1.0",
-    "yosay": "^1.0.0",
-    "chalk": "^0.5.1"
+    "semver": "^4.3.6",
+    "yosay": "^1.0.4",
+    "chalk": "^1.1.0"
   },
   "devDependencies": {
     "coffee-script": "^1.8.0",

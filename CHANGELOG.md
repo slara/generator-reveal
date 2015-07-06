@@ -1,5 +1,11 @@
 # Changelog
 
+## [v0.4.1](https://github.com/slara/generator-reveal/compare/v0.4.0...v0.4.1)
+### Fixes
+ - Bump dependencies
+ - Allow for resource inclussio
+
+
 ## [v0.4.0](https://github.com/slara/generator-reveal/compare/v0.3.10...v0.4.0)
 ### Fixes
  - Fix path to fonts for dist and deploy tasks. Thanks to @mischah.
