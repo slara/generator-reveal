@@ -6,4 +6,4 @@ node_js:
 before_script: npm config set coverage true
 after_success: npm run-script coveralls
 env:
-  - DEBUG="generators:*"
+  - DEBUG="yeoman:generator"
