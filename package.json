@@ -33,9 +33,6 @@
     "coffeelint": "coffeelint app/index.coffee slide/index.coffee test Gruntfile.coffee",
     "prepublish": "grunt coffee && npm test"
   },
-  "peerDependencies": {
-    "yo": ">=1.0.0"
-  },
   "dependencies": {
     "yeoman-generator": "^0.18.0",
     "semver": "^4.3.6",
