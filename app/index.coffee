@@ -44,7 +44,7 @@ module.exports = class RevealGenerator extends yeoman.generators.Base
                 }
                 {
                     name: 'useSass'
-                    message: 'Do you want to use SASS to create a custom theme? This requires you to have Ruby and Sass installed.'
+                    message: 'Do you want to use Sass to create a custom theme?'
                     type: 'confirm'
                     default: @config.get 'useSass'
                 }
