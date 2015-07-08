@@ -196,13 +196,13 @@ template for the automatically generated `index.html`.
 
 ### Highlight.js Syntax Themes
 
-The generated presentation app includes the [Highlight.js Syntax Themes for Reveal.js](https://github.com/nwinkler/reveal-highlight-themes) as a dependency, allowing you to change the syntax theme.
+The generated presentation app includes the Highlight.js Syntax Themes as a dependency, allowing you to change the syntax theme.
 
-The available syntax themes can be found in the `bower_components/reveal-highlight-themes` folder. Selecting a new syntax theme can be done by changing the stylesheet reference in the `templates/_index.html` file:
+The available syntax themes can be found in the `bower_components/highlightjs/styles` folder. Selecting a new syntax theme can be done by changing the stylesheet reference in the `templates/_index.html` file:
 
 ```html
 <!-- For syntax highlighting -->
-<link rel="stylesheet" href="bower_components/reveal-highlight-themes/styles/monokai_sublime.css" id="highlight-theme">
+<link rel="stylesheet" href="bower_components/highlightjs/styles/monokai_sublime.css">
 ```
 
 ## License
