@@ -116,7 +116,7 @@ describe 'Generator Reveal', ->
                 assert.fileContent 'Gruntfile.coffee', /'css\/\*.css'/
                 assert.fileContent 'Gruntfile.coffee', /'css\/theme.css': 'css\/source\/theme.scss'/
                 assert.fileContent 'templates/_index.html', /<link rel="stylesheet" href="css\/theme.css" id="theme">/
-                assert.fileContent 'package.json', /"grunt-contrib-sass"/
+                assert.fileContent 'package.json', /"grunt-sass"/
                 done()
 
     it 'generates Build control configuration for Github Pages Deployment', (done) ->
