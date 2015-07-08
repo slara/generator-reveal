@@ -8,8 +8,8 @@
 
 ## [v0.4.1](https://github.com/slara/generator-reveal/compare/v0.4.0...v0.4.1)
 ### Changes
- - Bump deddpendencies
- - Allow for resource inclusion. Thanks to @atomaka
+ - Bump dependencies.
+ - Allow for resource inclusion. Thanks to @atomaka.
 
 
 ## [v0.4.0](https://github.com/slara/generator-reveal/compare/v0.3.10...v0.4.0)
