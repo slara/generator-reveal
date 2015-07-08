@@ -1,5 +1,11 @@
 # Changelog
 
+## [v0.5.0](https://github.com/slara/generator-reveal/compare/v0.4.1...v0.5.0)
+### Changes
+ - Update dependencies in own `package.json` and generated `package.json`. **Possibly breaking change.**
+ - Most importantly update `reveal.js` to `v3` and everything that goes along with it. **Possibly breaking change.**
+ - Dropped dependency on `ruby sass` for custom themes. `node-sass` does it now.
+
 ## [v0.4.1](https://github.com/slara/generator-reveal/compare/v0.4.0...v0.4.1)
 ### Changes
  - Bump deddpendencies
