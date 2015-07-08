@@ -34,10 +34,12 @@
     "prepublish": "grunt coffee && npm test"
   },
   "dependencies": {
-    "yeoman-generator": "^0.18.0",
+    "chalk": "^1.1.0",
+    "lodash": "^3.10.0",
     "semver": "^4.3.6",
-    "yosay": "^1.0.4",
-    "chalk": "^1.1.0"
+    "underscore.string": "^3.1.1",
+    "yeoman-generator": "^0.20.0",
+    "yosay": "^1.0.4"
   },
   "devDependencies": {
     "coffee-script": "^1.8.0",

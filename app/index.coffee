@@ -5,7 +5,9 @@ yeoman = require 'yeoman-generator'
 semver = require 'semver'
 yosay = require 'yosay'
 chalk = require 'chalk'
-
+slugify = require 'underscore.string/slugify'
+capitalize = require 'underscore.string/capitalize'
+_ = require 'lodash'
 
 module.exports = class RevealGenerator extends yeoman.generators.Base
     initializing: ->
@@ -90,15 +92,15 @@ module.exports = class RevealGenerator extends yeoman.generators.Base
         app: ->
             @fs.copyTpl @templatePath('_index.md'), @destinationPath('slides/index.md'), @
             @fs.copyTpl @templatePath('_Gruntfile.coffee'), @destinationPath('Gruntfile.coffee'), @
-            @fs.copyTpl @templatePath('_package.json'), @destinationPath('package.json'), @
-            @fs.copyTpl @templatePath('_bower.json'), @destinationPath('bower.json'), @
+
+            @fs.copyTpl @templatePath('_package.json'), @destinationPath('package.json'), {slugify: slugify, config: @config}
+            @fs.copyTpl @templatePath('_bower.json'), @destinationPath('bower.json'), {slugify: slugify, config: @config}
             @fs.copy @templatePath('loadhtmlslides.js'), @destinationPath('js/loadhtmlslides.js')
             @fs.copy @templatePath('list.json'), @destinationPath('slides/list.json')
             @fs.copy @templatePath('theme.scss'), @destinationPath('css/source/theme.scss') if @config.get 'useSass'
 
-            # inception. use `@copy`, see https://github.com/yeoman/generator/issues/700#issuecomment-63501734
-            @copy @templatePath('__index.html'), @destinationPath('templates/_index.html')
-            @copy @templatePath('__section.html'), @destinationPath('templates/_section.html')
+            @fs.copyTpl @templatePath('__index.html'), @destinationPath('templates/_index.html'), {'_': _, capitalize: capitalize, config: @config}
+            @fs.copyTpl @templatePath('__section.html'), @destinationPath('templates/_section.html'), {'_': _, config: @config}
 
             @fs.write @destinationPath('resources/.gitkeep'), 'Used to store static assets'
 

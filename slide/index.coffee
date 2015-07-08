@@ -3,6 +3,7 @@
 fs = require 'fs'
 path = require 'path'
 yeoman = require 'yeoman-generator'
+slugify = require 'underscore.string/slugify'
 
 module.exports = class SlideGenerator extends yeoman.generators.NamedBase
     configuring: ->
@@ -24,7 +25,7 @@ module.exports = class SlideGenerator extends yeoman.generators.NamedBase
         list = @fs.readJSON fullPath
 
         if @options.markdown
-            @filename = "#{@_.slugify(@name)}.md"
+            @filename = "#{slugify(@name)}.md"
             @log.info 'Using Markdown.'
 
             if @options.notes
@@ -33,7 +34,7 @@ module.exports = class SlideGenerator extends yeoman.generators.NamedBase
                 @template 'slide.md', "slides/#{@filename}"
 
         else
-            @filename = "#{@_.slugify(@name)}.html"
+            @filename = "#{slugify(@name)}.html"
             @log.info 'Using HTML.'
 
             if @options.notes

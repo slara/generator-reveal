@@ -1,5 +1,5 @@
 {
-  "name": "<%= _.slugify(config.get('presentationTitle')) %>",
+  "name": "<%= slugify(config.get('presentationTitle')) %>",
   "version": "<%= config.get('packageVersion') %>",
   "dependencies": {
     "reveal.js": "~3.1.0",
