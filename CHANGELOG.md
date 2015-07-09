@@ -1,5 +1,9 @@
 # Changelog
 
+## [v0.5.1](https://github.com/slara/generator-reveal/compare/v0.5.0...v0.5.1)
+### Fixes
+ - Fix path to font css in theme.scss template.
+
 ## [v0.5.0](https://github.com/slara/generator-reveal/compare/v0.4.1...v0.5.0)
 ### Changes
  - Update dependencies in own `package.json` and generated `package.json`. **Possibly breaking change.**
