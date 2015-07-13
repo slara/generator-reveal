@@ -1,5 +1,12 @@
 # Changelog
 
+## [v0.5.2](https://github.com/slara/generator-reveal/compare/v0.5.1...v0.5.2)
+### Fixes
+ - Enable syntax highlighting by default (#69).
+
+### Changes
+ - Update dependencies of generator.
+
 ## [v0.5.1](https://github.com/slara/generator-reveal/compare/v0.5.0...v0.5.1)
 ### Fixes
  - Fix path to font css in theme.scss template.
