@@ -11,7 +11,8 @@
     "grunt-contrib-jshint": "^0.11.2",
     "load-grunt-tasks": "^3.2.0", <% if (config.get('deployToGithubPages')) { %>
     "grunt-build-control": "^0.5.0",<% } %>
-    "grunt-coffeelint": "0.0.13"
+    "grunt-coffeelint": "0.0.13",
+    "coffeelint": "^1.0.0"
   },
   "engines": {
     "node": ">=0.10.0",
