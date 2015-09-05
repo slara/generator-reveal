@@ -1,5 +1,9 @@
 # Changelog
 
+## [v0.5.3](https://github.com/slara/generator-reveal/compare/v0.5.2...v0.5.3)
+### Fixes
+ - Fix possible slide filename regression ([commit](https://github.com/slara/generator-reveal/commit/04866942811385481dee5fb3913251bd4ffb4dea)).
+
 ## [v0.5.2](https://github.com/slara/generator-reveal/compare/v0.5.1...v0.5.2)
 ### Fixes
  - Enable syntax highlighting by default (#69).
