@@ -44,7 +44,7 @@
   "devDependencies": {
     "coffee-script": "^1.8.0",
     "coffeelint": "^1.7.0",
-    "coffeelint-use-strict": "0.0.1",
+    "coffeelint-use-strict": "^1.0.0",
     "coveralls": "^2.11.2",
     "grunt": "^0.4.5",
     "grunt-cli": "^0.1.13",
