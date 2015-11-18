@@ -2,6 +2,7 @@
 module.exports = (grunt) ->
 
     grunt.initConfig
+        pkg: grunt.file.readJSON 'package.json'
 
         watch:
 
@@ -101,7 +102,7 @@ module.exports = (grunt) ->
                 message: 'Built from %sourceCommit% on branch %sourceBranch%'
             pages:
                 options:
-                    remote: 'git@github.com:<%= config.get('githubUsername') %>/<%= config.get('githubRepository')%>.git'
+                    remote: '<%%= pkg.repository.url %>'
                     branch: 'gh-pages'
         <% } %>
 
