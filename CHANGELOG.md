@@ -1,5 +1,9 @@
 # Changelog
 
+## [v0.5.4](https://github.com/slara/generator-reveal/compare/v0.5.3...v0.5.4)
+### Changes
+ - Use `repository` entry of generated package.json file for configuration of `grunt deploy` task ([#73](https://github.com/slara/generator-reveal/pull/73)).
+
 ## [v0.5.3](https://github.com/slara/generator-reveal/compare/v0.5.2...v0.5.3)
 ### Fixes
  - Fix possible slide filename regression ([commit](https://github.com/slara/generator-reveal/commit/04866942811385481dee5fb3913251bd4ffb4dea)).
