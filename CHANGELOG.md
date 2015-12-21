@@ -1,5 +1,9 @@
 # Changelog
 
+## [v0.5.5](https://github.com/slara/generator-reveal/compare/v0.5.4...v0.5.5)
+### Changes
+ - Update yeoman-generator dependency to `v0.22`.
+
 ## [v0.5.4](https://github.com/slara/generator-reveal/compare/v0.5.3...v0.5.4)
 ### Changes
  - Use `repository` entry of generated package.json file for configuration of `grunt deploy` task ([#73](https://github.com/slara/generator-reveal/pull/73)).
