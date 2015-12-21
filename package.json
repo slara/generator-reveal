@@ -38,7 +38,7 @@
     "lodash": "^3.10.0",
     "semver": "^5.0.0",
     "underscore.string": "^3.2.2",
-    "yeoman-generator": "^0.21.1",
+    "yeoman-generator": "^0.22.1",
     "yosay": "^1.0.4"
   },
   "devDependencies": {
@@ -53,7 +53,9 @@
     "istanbul": "^0.4.0",
     "jshint": "^2.5.10",
     "load-grunt-tasks": "^3.1.0",
-    "mocha": "^2.0.1"
+    "mocha": "^2.0.1",
+    "yeoman-assert": "^2.1.1",
+    "yeoman-test": "^1.0.0"
   },
   "engines": {
     "node": ">=0.10.0",

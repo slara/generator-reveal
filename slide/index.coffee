@@ -2,10 +2,14 @@
 
 fs = require 'fs'
 path = require 'path'
-yeoman = require 'yeoman-generator'
+generators = require 'yeoman-generator'
 slugify = require 'underscore.string/slugify'
 
-module.exports = class SlideGenerator extends yeoman.generators.NamedBase
+module.exports = class SlideGenerator extends generators.Base
+    constructor: ->
+        generators.Base.apply this, arguments
+        @argument 'name', type: String, required: true
+
     configuring: ->
         @option 'notes',
             desc: 'Include speaker notes'

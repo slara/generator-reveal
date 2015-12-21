@@ -4,8 +4,8 @@ path = require 'path'
 fs = require 'fs'
 yeoman = require 'yeoman-generator'
 
-assert = yeoman.assert
-helpers = yeoman.test
+assert = require 'yeoman-assert'
+helpers = require 'yeoman-test'
 
 init_list_dot_json_file = (generator) ->
     fs.mkdirSync generator.destinationPath('slides')

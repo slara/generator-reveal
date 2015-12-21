@@ -8,8 +8,8 @@ _assert = require 'assert'
 coffeelint = require 'coffeelint'
 jshintcli = require 'jshint/src/cli'
 
-assert = yeoman.assert
-helpers = yeoman.test
+assert = require 'yeoman-assert'
+helpers = require 'yeoman-test'
 
 lint_generated_files = (cb) ->
     coffee_results = coffeelint.lint(
