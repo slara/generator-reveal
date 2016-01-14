@@ -2,7 +2,7 @@
 
 ## [v0.5.6](https://github.com/slara/generator-reveal/compare/v0.5.5...v0.5.6)
 ### Changes
- - Update dependencies in generated `bower.json` (#74).
+ - Update dependencies in generated `bower.json` ([#74](https://github.com/slara/generator-reveal/pull/74)).
 
 ## [v0.5.5](https://github.com/slara/generator-reveal/compare/v0.5.4...v0.5.5)
 ### Changes
