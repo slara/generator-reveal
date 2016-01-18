@@ -1,5 +1,9 @@
 # Changelog
 
+## [v0.5.7](https://github.com/slara/generator-reveal/compare/v0.5.6...v0.5.7)
+### Fixes
+ - Only gitignore `/index.html` in generated directory ([#75](https://github.com/slara/generator-reveal/pull/75)).
+
 ## [v0.5.6](https://github.com/slara/generator-reveal/compare/v0.5.5...v0.5.6)
 ### Changes
  - Update dependencies in generated `bower.json` ([#74](https://github.com/slara/generator-reveal/pull/74)).
