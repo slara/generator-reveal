@@ -2,7 +2,7 @@
 
 ## [v0.5.8](https://github.com/slara/generator-reveal/compare/v0.5.7...v0.5.8)
 ### Fixes
- - Update `grunt-sass` dependencies generated `package.json` ([#76](https://github.com/slara/generator-reveal/pull/76)).
+ - Update `grunt-sass` dependency in generated `package.json` ([#76](https://github.com/slara/generator-reveal/pull/76)).
 
 ## [v0.5.7](https://github.com/slara/generator-reveal/compare/v0.5.6...v0.5.7)
 ### Fixes
