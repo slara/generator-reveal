@@ -48,7 +48,7 @@
     "coveralls": "^2.11.2",
     "grunt": "^0.4.5",
     "grunt-cli": "^0.1.13",
-    "grunt-contrib-coffee": "^0.13.0",
+    "grunt-contrib-coffee": "^1.0.0",
     "grunt-contrib-watch": "^0.6.1",
     "istanbul": "^0.4.0",
     "jshint": "^2.5.10",
