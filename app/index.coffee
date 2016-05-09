@@ -23,7 +23,6 @@ module.exports = class RevealGenerator extends generators.Base
 
     prompting:
         askFor: ->
-            cb = @async()
             # Have Yeoman greet the user.
             @log yosay()
             @log chalk.magenta(
@@ -77,7 +76,7 @@ module.exports = class RevealGenerator extends generators.Base
                     when: (props) -> props.deployToGithubPages is on
                 }
             ]
-            @prompt prompts, (props) =>
+            @prompt(prompts).then (props) =>
                 # Write answers to `config`.
                 @config.set 'presentationTitle', props.presentationTitle
                 @config.set 'packageVersion', props.packageVersion
@@ -86,7 +85,6 @@ module.exports = class RevealGenerator extends generators.Base
                 @config.set 'deployToGithubPages', props.deployToGithubPages
                 @config.set 'githubUsername', props.githubUsername
                 @config.set 'githubRepository', props.githubRepository
-                cb()
 
     writing:
         app: ->
