@@ -1,5 +1,9 @@
 # Changelog
 
+## [v0.5.9](https://github.com/slara/generator-reveal/compare/v0.5.8...v0.5.9)
+### Changes
+ - Update yeoman-generator dependency to `v0.23`.
+
 ## [v0.5.8](https://github.com/slara/generator-reveal/compare/v0.5.7...v0.5.8)
 ### Fixes
  - Update `grunt-sass` dependency in generated `package.json` ([#76](https://github.com/slara/generator-reveal/pull/76)).
