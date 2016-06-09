@@ -130,7 +130,7 @@ describe 'Generator Reveal', ->
                 githubRepository: 'reveal-js'
             )
             .on 'end', ->
-                assert.fileContent 'package.json', /git@github.com:yeoman\/reveal-js.git/
+                assert.fileContent 'package.json', /https:\/\/github.com\/yeoman\/reveal-js/
                 assert.fileContent 'Gruntfile.coffee', /<\%= pkg.repository.url %>/
                 assert.fileContent 'Gruntfile.coffee', /grunt.registerTask 'deploy'/
                 assert.fileContent 'package.json', /"grunt-build-control"/
