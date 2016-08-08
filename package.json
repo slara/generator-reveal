@@ -52,7 +52,7 @@
     "istanbul": "^0.4.0",
     "jshint": "^2.5.10",
     "load-grunt-tasks": "^3.1.0",
-    "mocha": "^2.0.1",
+    "mocha": "^3.0.2",
     "yeoman-assert": "^2.1.1",
     "yeoman-test": "^1.4.0"
   },
