@@ -1,5 +1,13 @@
 # Changelog
 
+## [v1.0.0](https://github.com/slara/generator-reveal/compare/v0.5.9...v1.0.0)
+### Breaking
+ - Drop support for node `v0.10` and `v0.12`.
+ 
+### Changes
+ - Update yeoman-generator dependency to `v1`.
+ - Update all packaged dependencies like `reveal.js`, `grunt`, etc. to the latest version.
+
 ## [v0.5.9](https://github.com/slara/generator-reveal/compare/v0.5.8...v0.5.9)
 ### Changes
  - Update yeoman-generator dependency to `v0.23`.
