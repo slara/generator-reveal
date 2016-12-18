@@ -1,7 +1,7 @@
 'use strict'
 
 path = require 'path'
-generators = require 'yeoman-generator'
+Generator = require 'yeoman-generator'
 semver = require 'semver'
 yosay = require 'yosay'
 chalk = require 'chalk'
@@ -9,7 +9,7 @@ slugify = require 'underscore.string/slugify'
 capitalize = require 'underscore.string/capitalize'
 _ = require 'lodash'
 
-module.exports = class RevealGenerator extends generators.Base
+module.exports = class RevealGenerator extends Generator
     initializing: ->
         @pkg = @fs.readJSON path.join __dirname, '../package.json'
 

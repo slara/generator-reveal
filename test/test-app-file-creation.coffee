@@ -34,12 +34,14 @@ describe 'Generator Reveal', ->
 
     beforeEach ->
         run_context = helpers.run(path.join __dirname, '../app')
+        # do not return Promise, since we do not want to wait for it yet!
+        null
     afterEach (done) ->
         lint_generated_files(done)
 
     context 'with defaults', ->
-        beforeEach (done) ->
-            run_context.on 'end', done
+        beforeEach ->
+            run_context
 
         it 'should generate dotfiles', ->
             expected = [
@@ -74,7 +76,7 @@ describe 'Generator Reveal', ->
             assert.fileContent '.yo-rc.json', '"presentationTitle": "Reveal.js and Yeoman is Awesomeness"'
             assert.fileContent '.yo-rc.json', 'packageVersion": "0.0.0"'
 
-    it 'generates package.json with correct version', (done) ->
+    it 'generates package.json with correct version', ->
         run_context
             .withPrompts(
                 presentationTitle: 'package.json test'
@@ -82,9 +84,8 @@ describe 'Generator Reveal', ->
             )
             .on 'end', ->
                 assert.fileContent 'package.json', /"version": "1.2.3"/
-                done()
 
-    it 'updates .yo-rc.json config according to prompt input', (done) ->
+    it 'updates .yo-rc.json config according to prompt input', ->
         run_context
             .withPrompts(
                 presentationTitle: 'ICanHazConfig'
@@ -99,9 +100,8 @@ describe 'Generator Reveal', ->
                 assert.fileContent '.yo-rc.json', /"revealTheme": "simple"/
                 assert.fileContent '.yo-rc.json', /"presentationTitle": "ICanHazConfig"/
                 assert.fileContent '.yo-rc.json', /"packageVersion": "0.1.0"/
-                done()
 
-    it 'generates SASS support for themes', (done) ->
+    it 'generates SASS support for themes', ->
         run_context
             .withPrompts(
                 presentationTitle: 'SASS Support 4 Custom Themes'
@@ -117,12 +117,11 @@ describe 'Generator Reveal', ->
                 assert.fileContent 'Gruntfile.coffee', /'css\/theme.css': 'css\/source\/theme.scss'/
                 assert.fileContent 'templates/_index.html', /<link rel="stylesheet" href="css\/theme.css" id="theme">/
                 assert.fileContent 'package.json', /"grunt-sass"/
-                done()
 
-    it 'generates Build control configuration for Github Pages Deployment', (done) ->
+    it 'generates Build control configuration for Github Pages Deployment', ->
         run_context
             .withPrompts(
-                pressentationTitle: 'Deploy to Github Pages'
+                presentationTitle: 'Deploy to Github Pages'
                 packageVersion: '0.0.1'
                 useSass: false
                 deployToGithubPages: true
@@ -136,12 +135,11 @@ describe 'Generator Reveal', ->
                 assert.fileContent 'package.json', /"grunt-build-control"/
                 assert.fileContent '.yo-rc.json', /"githubUsername": "yeoman"/
                 assert.fileContent '.yo-rc.json', /"githubRepository": "reveal-js"/
-                done()
 
-    it 'uses selected theme when not using sass', (done) ->
+    it 'uses selected theme when not using sass', ->
         run_context
             .withPrompts(
-                pressentationTitle: 'Deploy to Github Pages'
+                presentationTitle: 'Deploy to Github Pages'
                 packageVersion: '0.0.1'
                 useSass: false
                 revealTheme: 'night'
@@ -149,4 +147,3 @@ describe 'Generator Reveal', ->
             )
             .on 'end', ->
                 assert.fileContent 'templates/_index.html', /<link rel="stylesheet" href="bower_components\/reveal.js\/css\/theme\/night.css" id="theme">/
-                done()

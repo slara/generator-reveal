@@ -2,12 +2,12 @@
 
 fs = require 'fs'
 path = require 'path'
-generators = require 'yeoman-generator'
+Generator = require 'yeoman-generator'
 slugify = require 'underscore.string/slugify'
 
-module.exports = class SlideGenerator extends generators.Base
+module.exports = class SlideGenerator extends Generator
     constructor: ->
-        generators.Base.apply this, arguments
+        Generator.apply this, arguments
         @argument 'name', type: String, required: true
 
     configuring: ->
@@ -29,22 +29,22 @@ module.exports = class SlideGenerator extends generators.Base
         list = @fs.readJSON fullPath
 
         if @options.markdown
-            @filename = "#{slugify(@name)}.md"
+            @filename = "#{slugify(@options.name)}.md"
             @log.info 'Using Markdown.'
 
             if @options.notes
-                @template 'slide-withnotes.md', "slides/#{@filename}"
+                @fs.copyTpl @templatePath('slide-withnotes.md'), @destinationPath("slides/#{@filename}"), name: @options.name
             else
-                @template 'slide.md', "slides/#{@filename}"
+                @fs.copyTpl @templatePath('slide.md'), @destinationPath("slides/#{@filename}"), name: @options.name
 
         else
-            @filename = "#{slugify(@name)}.html"
+            @filename = "#{slugify(@options.name)}.html"
             @log.info 'Using HTML.'
 
             if @options.notes
-                @template 'slide-withnotes.html', "slides/#{@filename}"
+                @fs.copyTpl @templatePath('slide-withnotes.html'), @destinationPath("slides/#{@filename}"), name: @options.name
             else
-                @template 'slide.html', "slides/#{@filename}"
+                @fs.copyTpl @templatePath('slide.html'), @destinationPath("slides/#{@filename}"), name: @options.name
 
         if @options.attributes
             @log.info "Appending slides/#{@filename} to slides/list.json."

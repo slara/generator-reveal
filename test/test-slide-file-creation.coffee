@@ -13,12 +13,11 @@ init_list_dot_json_file = (generator) ->
 
 describe 'Sub-Generator Slide', ->
     describe 'default (no options passed)', ->
-        before (done) ->
+        before ->
             helpers
                 .run(path.join __dirname, '../slide')
                 .withArguments(['Some Default Name'])
                 .on('ready', init_list_dot_json_file)
-                .on 'end', done
 
         it 'creates html slide', ->
             assert.fileContent 'slides/some-default-name.html',
@@ -27,12 +26,11 @@ describe 'Sub-Generator Slide', ->
                 /"some-default-name.html"/
 
     describe 'with --attributes option', ->
-        before (done) ->
+        before ->
             helpers
                 .run(path.join __dirname, '../slide')
                 .withArguments(['HTML Attributes', '--attributes'])
                 .on('ready', init_list_dot_json_file)
-                .on 'end', done
 
         it 'creates html slide with attributes hash in list.json', ->
             assert.fileContent 'slides/html-attributes.html',
@@ -45,12 +43,11 @@ describe 'Sub-Generator Slide', ->
                 /"data-background": "#ff0000"/
 
     describe 'with --notes option', ->
-        before (done) ->
+        before ->
             helpers
                 .run(path.join __dirname, '../slide')
                 .withArguments(['HTML With Notes', '--notes'])
                 .on('ready', init_list_dot_json_file)
-                .on 'end', done
 
         it 'creates html slide with notes', ->
             assert.fileContent 'slides/html-with-notes.html',
@@ -60,7 +57,7 @@ describe 'Sub-Generator Slide', ->
 
 
     describe 'with --markdown and --notes options', ->
-        before (done) ->
+        before ->
             helpers
                 .run(path.join __dirname, '../slide')
                 .withArguments([
@@ -69,7 +66,6 @@ describe 'Sub-Generator Slide', ->
                     '--markdown'
                 ])
                 .on('ready', init_list_dot_json_file)
-                .on 'end', done
 
         it 'creates markdown slide with notes', ->
             assert.fileContent 'slides/markdown-with-notes.md',
@@ -78,12 +74,11 @@ describe 'Sub-Generator Slide', ->
                 /"markdown-with-notes.md"/
 
     describe 'with --markdown option', ->
-        before (done) ->
+        before ->
             helpers
                 .run(path.join __dirname, '../slide')
                 .withArguments(['Markdown Format', '--markdown'])
                 .on('ready', init_list_dot_json_file)
-                .on 'end', done
 
         it 'creates markdown slide', ->
             assert.fileContent 'slides/markdown-format.md',
@@ -92,7 +87,7 @@ describe 'Sub-Generator Slide', ->
                 /"markdown-format.md"/
 
     describe 'with --markdown and --attributes options', ->
-        before (done) ->
+        before ->
             helpers
                 .run(path.join __dirname, '../slide')
                 .withArguments([
@@ -101,7 +96,6 @@ describe 'Sub-Generator Slide', ->
                     '--attributes'
                 ])
                 .on('ready', init_list_dot_json_file)
-                .on 'end', done
 
         it 'creates markdown slide with attributes hash in list.json', ->
             assert.fileContent 'slides/markdown-with-attributes.md',
