@@ -2,7 +2,7 @@
   "name": "<%= slugify(config.get('presentationTitle')) %>",
   "version": "<%= config.get('packageVersion') %>",
   "dependencies": {
-    "reveal.js": "~3.2.0",
+    "reveal.js": "~3.3.0",
     "highlightjs": "~9.0.0"
   }
 }
