@@ -19,7 +19,7 @@
   },<% if (config.get('deployToGithubPages')) { %>
   "repository": {
     "type": "git",
-    "url": "git@github.com:<%= config.get('githubUsername') %>/<%= config.get('githubRepository')%>.git"
+    "url": "https://github.com/<%= config.get('githubUsername') %>/<%= config.get('githubRepository')%>"
 
   },<% } %>
   "scripts": {
