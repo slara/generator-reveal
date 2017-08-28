@@ -5,6 +5,8 @@ A [Yeoman](http://yeoman.io) generator for the awesome [Reveal.js](http://lab.ha
 
 ## Usage
 
+### Creating a new presentation
+
 Install:  `npm install -g generator-reveal`
 
 Make a new directory, and `cd` into it:
@@ -21,6 +23,21 @@ grunt serve
 ```
 
 Then, create further slides with `yo reveal:slide more-content`. See below for available [options](#options). When you want to export your presentation to some static HTML server, you can type `grunt dist` to have all your relevant files saved to the `dist` directory.
+
+### Working on an existing presentation
+
+If you are checking out an existing presentation to do some work on it, make sure to install the required dependencies:
+```
+cd my-existing-project
+npm install && bower install
+```
+
+Now you should be able to view the slides again with `grunt`:
+
+```bash
+grunt serve
+```
+
 
 ## Generators
 
