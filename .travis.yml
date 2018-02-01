@@ -1,10 +1,8 @@
 sudo: false
 language: node_js
 node_js:
-  - '6'
   - '7'
   - '8'
-  - 'lts'
 before_script: npm config set coverage true
 after_success: npm run-script coveralls
 env:
