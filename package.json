@@ -1,63 +1,63 @@
 {
-  "name": "generator-reveal",
-  "version": "1.0.0",
-  "description": "A Reveal.js generator for Yeoman",
-  "keywords": [
-    "yeoman-generator",
-    "reveal.js",
-    "slides",
-    "presentation"
-  ],
-  "homepage": "https://github.com/slara/generator-reveal",
-  "bugs": "https://github.com/slara/generator-reveal/issues",
-  "author": {
-    "name": "Sebastian Lara Menares",
-    "email": "slaramen@gmail.com",
-    "url": "https://github.com/slara"
-  },
-  "contributors": [
-    {
-      "name": "Jan Raasch",
-      "email": "jan@janraasch.com",
-      "url": "http://janraasch.com"
-    }
-  ],
-  "main": "app/index.js",
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/slara/generator-reveal.git"
-  },
-  "scripts": {
-    "test": "npm run coffeelint && istanbul test _mocha --report lcovonly -- ./test/*.coffee --require coffee-script/register --reporter spec --timeout 100000",
-    "coveralls": "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
-    "coffeelint": "coffeelint app/index.coffee slide/index.coffee test Gruntfile.coffee",
-    "prepublish": "grunt coffee && npm test"
-  },
-  "dependencies": {
-    "chalk": "^1.1.0",
-    "lodash": "^4.0.0",
-    "semver": "^5.0.0",
-    "underscore.string": "^3.2.2",
-    "yeoman-generator": "^1.0.0",
-    "yosay": "^1.0.4"
-  },
-  "devDependencies": {
-    "coffee-script": "^1.8.0",
-    "coffeelint": "^1.7.0",
-    "coffeelint-use-strict": "^1.0.0",
-    "coveralls": "^2.11.2",
-    "grunt": "^1.0.1",
-    "grunt-contrib-coffee": "^1.0.0",
-    "grunt-contrib-watch": "^1.0.0",
-    "istanbul": "^0.4.0",
-    "jshint": "^2.5.10",
-    "load-grunt-tasks": "^3.1.0",
-    "mocha": "^3.0.2",
-    "yeoman-assert": "^2.1.1",
-    "yeoman-test": "^1.4.0"
-  },
-  "engines": {
-    "node": ">=4"
-  },
-  "license": "MIT"
+    "name": "generator-reveal",
+    "version": "1.0.0",
+    "description": "A Reveal.js generator for Yeoman",
+    "keywords": [
+        "yeoman-generator",
+        "reveal.js",
+        "slides",
+        "presentation"
+    ],
+    "homepage": "https://github.com/slara/generator-reveal",
+    "bugs": "https://github.com/slara/generator-reveal/issues",
+    "author": {
+        "name": "Sebastian Lara Menares",
+        "email": "slaramen@gmail.com",
+        "url": "https://github.com/slara"
+    },
+    "contributors": [
+        {
+            "name": "Jan Raasch",
+            "email": "jan@janraasch.com",
+            "url": "http://janraasch.com"
+        }
+    ],
+    "main": "app/index.js",
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/slara/generator-reveal.git"
+    },
+    "scripts": {
+        "test": "npm run coffeelint && istanbul test _mocha --report lcovonly -- ./test/*.coffee --require coffeescript/register --reporter spec --timeout 100000",
+        "coveralls": "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
+        "coffeelint": "coffeelint app/index.coffee slide/index.coffee test Gruntfile.coffee",
+        "prepare": "grunt coffee && npm test"
+    },
+    "dependencies": {
+        "chalk": "^1.1.0",
+        "coffeescript": "^2.1.1",
+        "lodash": "^4.0.0",
+        "semver": "^5.0.0",
+        "underscore.string": "^3.2.2",
+        "yeoman-generator": "^1.0.0",
+        "yosay": "^1.0.4"
+    },
+    "devDependencies": {
+        "coffeelint": "^1.7.0",
+        "coffeelint-use-strict": "^1.0.0",
+        "coveralls": "^2.11.2",
+        "grunt": "^1.0.1",
+        "grunt-contrib-coffee": "^1.0.0",
+        "grunt-contrib-watch": "^1.0.0",
+        "istanbul": "^0.4.0",
+        "jshint": "^2.5.10",
+        "load-grunt-tasks": "^3.1.0",
+        "mocha": "^3.0.2",
+        "yeoman-assert": "^2.1.1",
+        "yeoman-test": "^1.4.0"
+    },
+    "engines": {
+        "node": ">=4"
+    },
+    "license": "MIT"
 }
