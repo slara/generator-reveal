@@ -4,7 +4,7 @@ node_js:
   - '6'
   - '7'
   - '8'
-  - 'latest'
+  - 'lts'
 before_script: npm config set coverage true
 after_success: npm run-script coveralls
 env:
